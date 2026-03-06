@@ -63,6 +63,7 @@
 - Git 灾备自动化 cron 已注册 ✅
 - 以后做了重要改动要 commit & push
 - 定期审查每日日志，提炼到本文件
+- **技能参考仓库**：https://github.com/clawdbot-ai/awesome-openclaw-skills-zh（苏神指定，问技能时先看这里）
 
 ---
 
