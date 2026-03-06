@@ -1,0 +1,9 @@
+# 排除项（慢雾指南规范）
+devices/*.tmp
+media/
+logs/
+completions/
+canvas/
+*.bak*
+*.tmp
+node_modules/

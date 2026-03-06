@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "5e07a1e5-1dee-425b-9bbd-e67e5cfe48b5",
+      "name": "nightly-security-audit",
+      "description": "每晚安全巡检 (慢雾指南 v2.7 macOS 适配版)",
+      "enabled": true,
+      "createdAtMs": 1772765101310,
+      "updatedAtMs": 1772765101310,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 3 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "Execute this command and output the result as-is, no extra commentary: bash ~/.openclaw/workspace/scripts/nightly-security-audit.sh",
+        "thinking": "off",
+        "timeoutSeconds": 300
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "last"
+      },
+      "state": {
+        "nextRunAtMs": 1772823600000
+      }
+    }
+  ]
+}
