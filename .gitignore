@@ -1,0 +1,13 @@
+# 敏感配置 - 绝不上传
+.openclaw/
+*.sha256
+*.secret
+*.key
+*.pem
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
