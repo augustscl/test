@@ -331,13 +331,34 @@ detail ""
 detail "--- [13] 灾备状态 ---"
 
 if [ -d "$OC/.git" ]; then
-    GIT_STATUS=$(cd "$OC" && git status --porcelain 2>/dev/null || true)
-    GIT_REMOTE=$(cd "$OC" && git remote -v 2>/dev/null || true)
-    detail "Git status: $GIT_STATUS"
-    detail "Git remote: $GIT_REMOTE"
-    ok "13. 灾备备份: Git 仓库已配置"
+    # workspace 有自己的 .git，备份时需要暂时移走
+    WS_GIT=""
+    if [ -d "$OC/workspace/.git" ]; then
+        WS_GIT="/tmp/openclaw-ws-git-$$"
+        mv "$OC/workspace/.git" "$WS_GIT"
+    fi
+
+    cd "$OC"
+    git add -A 2>/dev/null || true
+    CHANGES=$(git status --porcelain 2>/dev/null || true)
+    if [ -n "$CHANGES" ]; then
+        git commit -m "🛡️ 自动灾备 $DATE" 2>/dev/null || true
+    fi
+    PUSH_RESULT=$(git push origin main 2>&1 || true)
+    detail "Git push: $PUSH_RESULT"
+
+    # 恢复 workspace .git
+    if [ -n "$WS_GIT" ] && [ -d "$WS_GIT" ]; then
+        mv "$WS_GIT" "$OC/workspace/.git"
+    fi
+
+    if echo "$PUSH_RESULT" | grep -qiE "error|fatal|rejected"; then
+        warn "13. 灾备备份: 推送失败（详见报告）"
+    else
+        ok "13. 灾备备份: 已自动推送至 GitHub 私有仓库"
+    fi
 else
-    warn "13. 灾备备份: 未配置 Git 仓库（可选，后续可补）"
+    warn "13. 灾备备份: 未配置 Git 仓库"
 fi
 
 # ─────────────────────────────────────────────
