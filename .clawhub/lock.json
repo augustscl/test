@@ -16,6 +16,14 @@
     "multi-search-engine": {
       "version": "2.0.1",
       "installedAt": 1772842095615
+    },
+    "amap-lbs-skill": {
+      "version": "1.0.0",
+      "installedAt": 1772844365094
+    },
+    "amap-jsapi-skill": {
+      "version": "1.0.3",
+      "installedAt": 1772845331127
     }
   }
 }
