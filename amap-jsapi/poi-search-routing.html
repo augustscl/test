@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POI 搜索与路径规划 - 高德地图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        #header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        #container {
+            flex: 1;
+            display: flex;
+        }
+        #panel {
+            width: 360px;
+            background: #f8f9fa;
+            border-right: 1px solid #e9ecef;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+        .panel-section {
+            margin-bottom: 1.5rem;
+        }
+        .panel-section h3 {
+            font-size: 1rem;
+            color: #495057;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        .input-group label {
+            display: block;
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-bottom: 0.25rem;
+        }
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            transition: border-color 0.15s ease-in-out;
+        }
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .btn {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        #results {
+            margin-top: 1rem;
+        }
+        .result-item {
+            background: white;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #e9ecef;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+        .result-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+        }
+        .result-item h4 {
+            font-size: 0.875rem;
+            color: #212529;
+            margin-bottom: 0.25rem;
+        }
+        .result-item p {
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+        #map {
+            flex: 1;
+        }
+        .info-window {
+            padding: 0.5rem;
+        }
+        .info-window h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+        .info-window p {
+            font-size: 0.875rem;
+            color: #495057;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>🗺️ POI 搜索与路径规划</h1>
+        <span>Powered by 高德地图</span>
+    </div>
+    <div id="container">
+        <div id="panel">
+            <div class="panel-section">
+                <h3>🔍 POI 搜索</h3>
+                <div class="input-group">
+                    <label for="search-keyword">关键词</label>
+                    <input type="text" id="search-keyword" placeholder="例如：酒店、餐厅、景点">
+                </div>
+                <div class="input-group">
+                    <label for="search-city">城市</label>
+                    <input type="text" id="search-city" placeholder="例如：北京、上海、福州" value="福州">
+                </div>
+                <button class="btn btn-primary" id="search-btn">搜索 POI</button>
+                <div id="results"></div>
+            </div>
+            <div class="panel-section">
+                <h3>🛣️ 路径规划</h3>
+                <div class="input-group">
+                    <label for="route-type">出行方式</label>
+                    <select id="route-type">
+                        <option value="driving">驾车</option>
+                        <option value="walking">步行</option>
+                        <option value="riding">骑行</option>
+                        <option value="transfer">公交</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="start-point">起点</label>
+                    <input type="text" id="start-point" placeholder="点击地图选择或输入地址">
+                </div>
+                <div class="input-group">
+                    <label for="end-point">终点</label>
+                    <input type="text" id="end-point" placeholder="点击地图选择或输入地址">
+                </div>
+                <button class="btn btn-primary" id="route-btn">规划路线</button>
+            </div>
+        </div>
+        <div id="map"></div>
+    </div>
+
+    <script src="https://webapi.amap.com/loader.js"></script>
+    <script>
+        window._AMapSecurityConfig = {
+            securityJsCode: '690667cbef3d5fc79d6d623887b249c5'
+        };
+
+        let map = null;
+        let placeSearch = null;
+        let driving = null;
+        let walking = null;
+        let riding = null;
+        let transfer = null;
+        let geocoder = null;
+        let startMarker = null;
+        let endMarker = null;
+        let currentMarkers = [];
+
+        AMapLoader.load({
+            key: '690667cbef3d5fc79d6d623887b249c5',
+            version: '2.0',
+            plugins: [
+                'AMap.PlaceSearch',
+                'AMap.Driving',
+                'AMap.Walking',
+                'AMap.Riding',
+                'AMap.Transfer',
+                'AMap.Geocoder',
+                'AMap.Scale',
+                'AMap.ToolBar',
+                'AMap.ControlBar',
+                'AMap.Marker',
+                'AMap.InfoWindow'
+            ]
+        }).then((AMap) => {
+            initMap(AMap);
+            initServices(AMap);
+            initEventListeners(AMap);
+        }).catch((e) => {
+            console.error('地图加载失败:', e);
+            alert('地图加载失败，请检查网络连接或 API Key 配置');
+        });
+
+        function initMap(AMap) {
+            map = new AMap.Map('map', {
+                viewMode: '3D',
+                zoom: 12,
+                center: [119.3, 26.08],
+                pitch: 0,
+                rotation: 0
+            });
+            map.addControl(new AMap.Scale());
+            map.addControl(new AMap.ToolBar());
+            map.addControl(new AMap.ControlBar());
+        }
+
+        function initServices(AMap) {
+            placeSearch = new AMap.PlaceSearch({
+                pageSize: 10,
+                pageIndex: 1,
+                extensions: 'base'
+            });
+
+            driving = new AMap.Driving({
+                map: map,
+                panel: null
+            });
+
+            walking = new AMap.Walking({
+                map: map,
+                panel: null
+            });
+
+            riding = new AMap.Riding({
+                map: map,
+                panel: null
+            });
+
+            transfer = new AMap.Transfer({
+                map: map,
+                panel: null,
+                city: '福州'
+            });
+
+            geocoder = new AMap.Geocoder();
+        }
+
+        function initEventListeners(AMap) {
+            document.getElementById('search-btn').addEventListener('click', searchPOI);
+            document.getElementById('route-btn').addEventListener('click', planRoute);
+
+            map.on('click', (e) => {
+                if (!startMarker) {
+                    startMarker = new AMap.Marker({
+                        position: e.lnglat,
+                        icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_r.png'
+                    });
+                    map.add(startMarker);
+                    document.getElementById('start-point').value = `${e.lnglat.getLng().toFixed(6)},${e.lnglat.getLat().toFixed(6)}`;
+                } else if (!endMarker) {
+                    endMarker = new AMap.Marker({
+                        position: e.lnglat,
+                        icon: 'https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png'
+                    });
+                    map.add(endMarker);
+                    document.getElementById('end-point').value = `${e.lnglat.getLng().toFixed(6)},${e.lnglat.getLat().toFixed(6)}`;
+                }
+            });
+        }
+
+        function searchPOI() {
+            const keyword = document.getElementById('search-keyword').value;
+            const city = document.getElementById('search-city').value;
+
+            if (!keyword) {
+                alert('请输入搜索关键词');
+                return;
+            }
+
+            placeSearch.setCity(city);
+            placeSearch.search(keyword, (status, result) => {
+                if (status === 'complete' && result.info === 'OK') {
+                    displayResults(result.poiList.pois);
+                } else {
+                    alert('搜索失败，请重试');
+                }
+            });
+        }
+
+        function displayResults(pois) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            clearMarkers();
+
+            pois.forEach((poi, index) => {
+                const item = document.createElement('div');
+                item.className = 'result-item';
+                item.innerHTML = `
+                    <h4>${poi.name}</h4>
+                    <p>${poi.address || '暂无地址'}</p>
+                `;
+                item.addEventListener('click', () => {
+                    map.setZoomAndCenter(15, poi.location);
+                    showInfoWindow(poi);
+                });
+                resultsDiv.appendChild(item);
+
+                const marker = new AMap.Marker({
+                    position: poi.location,
+                    title: poi.name
+                });
+                marker.on('click', () => showInfoWindow(poi));
+                currentMarkers.push(marker);
+                map.add(marker);
+            });
+
+            if (pois.length > 0) {
+                map.setZoomAndCenter(12, pois[0].location);
+            }
+        }
+
+        function showInfoWindow(poi) {
+            const infoWindow = new AMap.InfoWindow({
+                content: `
+                    <div class="info-window">
+                        <h4>${poi.name}</h4>
+                        <p>📍 ${poi.address || '暂无地址'}</p>
+                        <p>🎯 类型：${poi.type || '暂无'}</p>
+                    </div>
+                `,
+                offset: new AMap.Pixel(0, -30)
+            });
+            infoWindow.open(map, poi.location);
+        }
+
+        function clearMarkers() {
+            currentMarkers.forEach(marker => map.remove(marker));
+            currentMarkers = [];
+        }
+
+        function planRoute() {
+            const routeType = document.getElementById('route-type').value;
+            const startPoint = document.getElementById('start-point').value;
+            const endPoint = document.getElementById('end-point').value;
+
+            if (!startPoint || !endPoint) {
+                alert('请选择起点和终点');
+                return;
+            }
+
+            const processPoints = (points) => {
+                map.clearMap();
+                if (startMarker) map.add(startMarker);
+                if (endMarker) map.add(endMarker);
+
+                switch (routeType) {
+                    case 'driving':
+                        driving.search(points[0], points[1]);
+                        break;
+                    case 'walking':
+                        walking.search(points[0], points[1]);
+                        break;
+                    case 'riding':
+                        riding.search(points[0], points[1]);
+                        break;
+                    case 'transfer':
+                        transfer.search(points[0], points[1]);
+                        break;
+                }
+            };
+
+            const parsePoint = (point) => {
+                if (point.includes(',')) {
+                    const [lng, lat] = point.split(',').map(Number);
+                    return new AMap.LngLat(lng, lat);
+                } else {
+                    return new Promise((resolve) => {
+                        geocoder.getLocation(point, (status, result) => {
+                            if (status === 'complete' && result.geocodes.length > 0) {
+                                resolve(result.geocodes[0].location);
+                            } else {
+                                alert(`无法解析地址: ${point}`);
+                                resolve(null);
+                            }
+                        });
+                    });
+                }
+            };
+
+            Promise.all([parsePoint(startPoint), parsePoint(endPoint)]).then((points) => {
+                if (points[0] && points[1]) {
+                    processPoints(points);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
