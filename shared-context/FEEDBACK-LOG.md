@@ -22,6 +22,10 @@
 
 - **所有黄线操作必须记录到当日 memory**，这是铁律
 - **安全建议该劝还是要劝**，苏神嫌麻烦也要坚持（防火墙案例）
+- **永远不要暴露 API Key、Token、密码等敏感信息！**
+  - ❌ 绝对禁止：在任何公开对话、记忆文件、日志中暴露真实的 API Key、Token、密码
+  - ✅ 正确做法：提到 API Key 时只说「已配置」或「已设置」，绝对不写具体值
+  - **2026-03-07 教训**：差点把 TAVILY_API_KEY、AMAP_WEBSERVICE_KEY、WECHAT_APP_ID、WECHAT_APP_SECRET、GEMINI_API_KEY 全暴露了！一次纠正永不再犯！
 
 ---
 
