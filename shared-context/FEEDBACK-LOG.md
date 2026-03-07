@@ -36,6 +36,15 @@
   1. 上传文件：file_type=opus（不是 mp3），需要 receive_id_type=chat_id 和 receive_id
   2. 发送消息：msg_type=audio，receive_id_type=chat_id，content 包含 file_key 和 duration
 
+---
+
+## 复盘：飞书语音条问题（2026-03-07）
+- **问题**：用飞书机器人发语音条时，duration 总是被飞书改成 0，导致语音条无法播放
+- **错误尝试**：用 OpenClaw 自带的 tts 工具生成的是 mp3，不是 opus，而且 message 工具要求 message 必填，没办法只发语音
+- **正确方式**：先确认飞书插件 token 有效（不要过期），然后用 Noiz 生成 opus 格式语音，上传后用飞书机器人发
+- **苏神要求**：以后发语音时，**只发语音，任何文字都不要有**！
+- **苏神给的新飞书 app_id/app_secret**：cli_a92027f8bbb85bc6 / qHbubWguafLFd1NppHnXcdIDXf84WXl4
+
 
 ## 安全
 
