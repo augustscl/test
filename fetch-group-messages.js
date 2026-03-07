@@ -1,83 +1,173 @@
+#!/usr/bin/env node
+/**
+ * 虾王群消息总结脚本
+ * 使用 tenant_access_token 调用飞书 API 获取群消息并生成总结
+ */
 
-const https = require('https');
+import * as Lark from "@larksuiteoapi/node-sdk";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-// 从配置里拿到的凭证
-const APP_ID = 'cli_a92027f8bbb85bc6';
-const APP_SECRET = 'qHbubWguafLFd1NppHnXcdIDXf84WXl4';
-const CHAT_ID = 'oc_4e3daa6139b1eb7beebec0de6dcef569';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// 辅助函数：发送HTTPS请求
-function request(options, data = null) {
-  return new Promise((resolve, reject) =&gt; {
-    const req = https.request(options, (res) =&gt; {
-      let body = '';
-      res.on('data', (chunk) =&gt; body += chunk);
-      res.on('end', () =&gt; {
-        try {
-          resolve(JSON.parse(body));
-        } catch (e) {
-          reject(e);
-        }
-      });
-    });
-    req.on('error', reject);
-    if (data) req.write(JSON.stringify(data));
-    req.end();
+// 配置文件路径
+const CONFIG_PATH = path.join(process.env.HOME, ".openclaw", "openclaw.json");
+
+// 群聊 ID（从 cron 任务中获取）
+const CHAT_ID = "oc_4e3daa6139b1eb7beebec0de6dcef569";
+
+// 加载配置
+function loadConfig() {
+  try {
+    const configData = fs.readFileSync(CONFIG_PATH, "utf8");
+    return JSON.parse(configData);
+  } catch (err) {
+    console.error("无法加载配置文件:", err.message);
+    process.exit(1);
+  }
+}
+
+// 获取飞书账户配置
+function getFeishuAccount(config) {
+  const feishuConfig = config?.plugins?.feishu;
+  if (!feishuConfig) {
+    console.error("未找到飞书插件配置");
+    process.exit(1);
+  }
+
+  // 找到第一个启用的账户
+  const accountId = Object.keys(feishuConfig.accounts || {}).find(
+    (id) => feishuConfig.accounts[id].enabled
+  );
+
+  if (!accountId) {
+    console.error("未找到启用的飞书账户");
+    process.exit(1);
+  }
+
+  return feishuConfig.accounts[accountId];
+}
+
+// 创建 Lark 客户端
+function createLarkClient(account) {
+  return new Lark.Client({
+    appId: account.appId,
+    appSecret: account.appSecret,
+    appType: Lark.AppType.SelfBuild,
+    domain: Lark.Domain.Feishu,
   });
 }
 
-// 1. 获取tenant_access_token
-async function getTenantAccessToken() {
-  const options = {
-    hostname: 'open.feishu.cn',
-    path: '/open-apis/auth/v3/tenant_access_token/internal',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  };
-  const data = {
-    app_id: APP_ID,
-    app_secret: APP_SECRET
-  };
-  const result = await request(options, data);
-  if (result.code !== 0) {
-    throw new Error(`获取tenant_access_token失败: ${JSON.stringify(result)}`);
+// 获取 tenant_access_token（虽然 SDK 会自动处理，但我们这里直接用 SDK）
+async function fetchMessages(client, chatId, hoursAgo = 1) {
+  const now = Date.now();
+  const startTime = now - hoursAgo * 60 * 60 * 1000;
+
+  // 调用飞书 API 获取消息
+  // 注意：这个 API 需要 tenant_access_token，SDK 会自动处理
+  const res = await client.request({
+    method: "GET",
+    url: "/open-apis/im/v1/messages",
+    params: {
+      container_id_type: "chat",
+      container_id: chatId,
+      sort_type: "ByCreateTimeDesc",
+      page_size: 50,
+    },
+  });
+
+  if (res.code !== 0) {
+    throw new Error(`API 调用失败: ${res.msg} (code: ${res.code})`);
   }
-  return result.tenant_access_token;
+
+  return res.data?.items || [];
 }
 
-// 2. 拉取群消息（过去1小时）
-async function fetchMessages(tenantAccessToken) {
-  const oneHourAgo = Date.now() - 3600 * 1000;
-  const options = {
-    hostname: 'open.feishu.cn',
-    path: `/open-apis/im/v1/messages?container_id_type=chat&amp;container_id=${CHAT_ID}&amp;sort_type=ByCreateTimeDesc&amp;page_size=100`,
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${tenantAccessToken}`
-    }
-  };
-  const result = await request(options);
-  if (result.code !== 0) {
-    throw new Error(`拉取消息失败: ${JSON.stringify(result)}`);
-  }
-  // 过滤过去1小时内的消息
-  const messages = (result.data?.items || []).filter(item =&gt; {
-    const createTime = parseInt(item.create_time, 10);
-    return createTime &gt;= oneHourAgo;
+// 过滤指定时间范围内的消息
+function filterMessagesByTime(messages, hoursAgo = 1) {
+  const now = Date.now();
+  const startTime = now - hoursAgo * 60 * 60 * 1000;
+
+  return messages.filter((msg) => {
+    const createTime = parseInt(msg.create_time, 10);
+    return createTime >= startTime;
   });
-  return messages.reverse(); // 按时间正序排列
+}
+
+// 解析消息内容
+function parseMessageContent(msg) {
+  try {
+    if (msg.msg_type === "text") {
+      const body = JSON.parse(msg.body);
+      return body.content || "";
+    }
+    return `[${msg.msg_type}]`;
+  } catch {
+    return msg.body || "";
+  }
+}
+
+// 生成总结
+function generateSummary(messages) {
+  if (messages.length === 0) {
+    return null;
+  }
+
+  // 按时间排序（最新的在后面）
+  const sortedMessages = [...messages].sort(
+    (a, b) => parseInt(a.create_time, 10) - parseInt(b.create_time, 10)
+  );
+
+  // 提取消息内容
+  const messageTexts = sortedMessages.map((msg) => {
+    const content = parseMessageContent(msg);
+    const sender = msg.sender?.sender_id?.open_id || "未知用户";
+    return `[${sender}] ${content}`;
+  });
+
+  // 这里可以集成 AI 来生成更智能的总结
+  // 暂时我们先简单输出消息列表，让调用者处理
+
+  return {
+    count: messages.length,
+    messages: sortedMessages,
+    messageTexts,
+  };
 }
 
 // 主函数
 async function main() {
   try {
-    const token = await getTenantAccessToken();
-    const messages = await fetchMessages(token);
-    console.log(JSON.stringify(messages, null, 2));
-  } catch (error) {
-    console.error('出错了:', error);
+    console.error("加载配置...");
+    const config = loadConfig();
+
+    console.error("获取飞书账户...");
+    const account = getFeishuAccount(config);
+
+    console.error("创建 Lark 客户端...");
+    const client = createLarkClient(account);
+
+    console.error("获取群消息...");
+    const allMessages = await fetchMessages(client, CHAT_ID);
+
+    console.error("过滤最近 1 小时的消息...");
+    const recentMessages = filterMessagesByTime(allMessages, 1);
+
+    console.error(`找到 ${recentMessages.length} 条消息`);
+
+    if (recentMessages.length === 0) {
+      console.error("没有新消息");
+      process.exit(0);
+    }
+
+    // 生成总结数据
+    const summary = generateSummary(recentMessages);
+
+    // 输出 JSON 供调用者处理
+    console.log(JSON.stringify(summary, null, 2));
+  } catch (err) {
+    console.error("执行失败:", err);
     process.exit(1);
   }
 }

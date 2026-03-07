@@ -44,6 +44,10 @@
 - **正确方式**：先确认飞书插件 token 有效（不要过期），然后用 Noiz 生成 opus 格式语音，上传后用飞书机器人发
 - **苏神要求**：以后发语音时，**只发语音，任何文字都不要有**！
 - **苏神给的新飞书 app_id/app_secret**：cli_a92027f8bbb85bc6 / qHbubWguafLFd1NppHnXcdIDXf84WXl4
+- **复盘：飞书应用身份 token 获取（2026-03-07）**
+  - **问题**：之前以为只有用户身份能拉群消息，其实应用身份也可以
+  - **解决**：有 app_id 和 app_secret，就可以自己用 curl 拿 tenant_access_token（应用身份）
+  - **苏神要求**：没有应用身份 token 时，自己获取，反正有 app_id 和 app_secret
 
 
 ## 安全
