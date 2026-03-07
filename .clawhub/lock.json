@@ -4,6 +4,18 @@
     "openclaw-tavily-search": {
       "version": "0.1.0",
       "installedAt": 1772770988852
+    },
+    "clawsec": {
+      "version": "1.0.0",
+      "installedAt": 1772841313169
+    },
+    "tavily-search": {
+      "version": "1.0.0",
+      "installedAt": 1772841324208
+    },
+    "multi-search-engine": {
+      "version": "2.0.1",
+      "installedAt": 1772842095615
     }
   }
 }
