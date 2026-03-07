@@ -24,6 +24,10 @@
     "amap-jsapi-skill": {
       "version": "1.0.3",
       "installedAt": 1772845331127
+    },
+    "summarize": {
+      "version": "1.0.0",
+      "installedAt": 1772854622471
     }
   }
 }
