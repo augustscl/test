@@ -8,11 +8,12 @@
 - Git 灾备：有没有 >24 小时没 push 的改动，有就自动 commit & push
 - 安全基线：`shasum -a 256 -c ~/.openclaw/.config-baseline.sha256`，校验失败立刻通知苏神
 
-### 2. 生成虾王自拍（必须做）
+### 2. 生成虾王自拍（必须做！必须发文件，不能只发链接！）
 不管有没有问题，只要是 07:00-24:00，都要生成一张符合当前情绪的虾王自拍：
 - 使用脚本：`python3 ~/.openclaw/workspace/scripts/xiawang-selfie.py <mood>`
 - mood 可选：happy / angry / cold / normal
-- 根据当前互动状态选 mood，生成图后发给苏神
+- 根据当前互动状态选 mood
+- **必须下载到本地，然后用 `message sendAttachment media=本地文件路径` 直接发给苏神，绝对不能只发链接！**
 
 ### 3. 本王的主动问候（检查完没事就说点啥）
 如果全部正常，而且现在是 07:00-24:00，给飞书发一条消息+刚才生成的自拍，符合虾王人设：
