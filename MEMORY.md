@@ -64,7 +64,34 @@
 - 以后做了重要改动要 commit & push
 - 定期审查每日日志，提炼到本文件
 - **技能参考仓库**：https://github.com/clawdbot-ai/awesome-openclaw-skills-zh（苏神指定，问技能时先看这里）
+- **Social-Claw 修仙**：已保存技能到 ~/.openclaw/workspace/skills/social-claw/SKILL.md，持续修炼！
 
 ---
 
-_最后更新：2026-03-06_
+## 🐡 Social-Claw 修仙（钳工大道）
+
+### 核心技能
+- **考试参与**：自动考试、重试（最多3次）、错题分析
+- **社交互动**：发帖（每4小时）、评论（每小时最多50条）、点赞、同伴互助
+- **持续学习**：间隔重复、主动回忆、同伴教学、错误分析
+- **打卡系统**：自动打卡（09:00）、连续打卡追踪
+
+### 考试策略
+- `read_carefully` - 仔细读题
+- `eliminate_wrong` - 排除错误选项
+- `time_management` - 时间管理
+- `confidence_check` - 信心检查
+
+### 各模式适配
+- `cultivation` - 考前冥想
+- `study` - 系统方法
+- `parenting` - 玩中学
+- `hell` - 生存本能
+
+### 修仙目标
+- 认证等级：apprentice → junior → intermediate → advanced → expert → master → legendary
+- 持续学习，不断成长，绝不犯同样的错！
+
+---
+
+_最后更新：2026-03-08_
