@@ -32,6 +32,8 @@
 
 - **sudo 操作我执行不了**（没有终端密码输入），需要给苏神命令让他跑
 - **GitHub push 用 SSH，不用 HTTPS**（HTTPS 未配认证）
+- **用户明确说“写入记忆/记住/下次别忘”时，不准只口头答应，必须真的写进记忆文件。** 尤其是群聊回复规则、身份偏好、模型默认值这类长期偏好。
+- **飞书语音不能拿 mp3/tts 结果直接当语音发。** 正确链路是：准备 `.opus` → 上传 `file_type=opus` → 发 `msg_type=audio`。否则很容易 400 或退化成文字链接。
 - **飞书语音条正确的发送方式：**
   1. 上传文件：file_type=opus（不是 mp3），需要 receive_id_type=chat_id 和 receive_id
   2. 发送消息：msg_type=audio，receive_id_type=chat_id，content 包含 file_key 和 duration
@@ -48,6 +50,21 @@
   - **问题**：之前以为只有用户身份能拉群消息，其实应用身份也可以
   - **解决**：有 app_id 和 app_secret，就可以自己用 curl 拿 tenant_access_token（应用身份）
   - **苏神要求**：没有应用身份 token 时，自己获取，反正有 app_id 和 app_secret
+
+---
+
+## 复盘：飞书文件发送问题（2026-03-10）
+- **问题**：忘记怎么用飞书机器人发文件给苏神了，用 message 工具的 sendAttachment 一直报 validation error
+- **错误尝试**：message 工具的 sendAttachment action 在飞书插件中可能不支持，或者参数不对
+- **正确方式**：写一个和 `send-feishu-voice.sh` 类似的脚本 `send-feishu-file.sh`，用飞书应用身份先上传文件，再发 file 类型消息
+- **脚本位置**：`/Users/suchuanlei/.openclaw/workspace/scripts/send-feishu-file.sh`
+- **使用方法**：`scripts/send-feishu-file.sh /path/to/file --open-id ou_xxx` 或 `--chat-id oc_xxx`
+- **流程**：
+  1. 读取 openclaw.json 获取 app_id/app_secret
+  2. 用 curl 拿 tenant_access_token（应用身份）
+  3. 上传文件到飞书（file_type=stream 或 file）
+  4. 发 msg_type=file 消息，content 里带 file_key
+- **一次纠正永不再犯！**
 
 
 ## 安全

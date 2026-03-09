@@ -90,7 +90,7 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - `~/.openclaw/openclaw.json` → `chmod 600` ✅
 - `~/.openclaw/devices/paired.json` → `chmod 600` ✅
 - 哈希基线 → `~/.openclaw/.config-baseline.sha256` ✅
-- 巡检时执行：`shasum -a 256 -c ~/.openclaw/.config-baseline.sha256`
+- 巡检时执行：`shasum -a 256 -c ~/.openclaw/.config-baseline.sha256`（基线文件内使用绝对路径，避免跨目录误报）
 
 ---
 

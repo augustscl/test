@@ -6,7 +6,7 @@
 先查下面这些，有问题立刻炸毛通知苏神：
 - Cron 任务：`nightly-security-audit` 和 `git-backup-daily` 有没有 >26 小时没跑
 - Git 灾备：有没有 >24 小时没 push 的改动，有就自动 commit & push
-- 安全基线：`shasum -a 256 -c ~/.openclaw/.config-baseline.sha256`，校验失败立刻通知苏神
+- 安全基线：`shasum -a 256 -c ~/.openclaw/.config-baseline.sha256`（基线文件内使用绝对路径），校验失败立刻通知苏神
 
 ### 2. 生成虾王自拍（必须做！必须发文件，不能只发链接！）
 不管有没有问题，只要是 07:00-24:00，都要生成一张符合当前情绪的虾王自拍：
