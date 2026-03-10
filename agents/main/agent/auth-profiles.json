@@ -5,15 +5,49 @@
       "type": "api_key",
       "provider": "openrouter",
       "key": "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"
+    },
+    "minimax-portal:default": {
+      "type": "oauth",
+      "provider": "minimax-portal",
+      "access": "sk-cp-vF_Sng_IOJTzasBP8wwQiOjNcd5V-t0jyxDdC8rSFSVzoRAOuDXVUtG2dh499za_Y1w4FaBnxTJhmRhOa36LHDgkeDQ6Fm8q6ZEl8tMWnTFkIIFBO2WxkfU",
+      "refresh": "o4Nx5I73Lmau1oiRNsKEWta3u5p5JLcu7SXbwTPsGoU=",
+      "expires": 1804318467486
+    },
+    "volcengine:default": {
+      "type": "api_key",
+      "provider": "volcengine",
+      "key": "974f5aa1-6590-46d3-8c33-10baaab03d6a"
+    },
+    "openai-codex:default": {
+      "type": "oauth",
+      "provider": "openai-codex",
+      "access": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjE5MzQ0ZTY1LWJiYzktNDRkMS1hOWQwLWY5NTdiMDc5YmQwZSIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiaHR0cHM6Ly9hcGkub3BlbmFpLmNvbS92MSJdLCJjbGllbnRfaWQiOiJhcHBfRU1vYW1FRVo3M2YwQ2tYYVhwN2hyYW5uIiwiZXhwIjoxNzczOTgxNjA1LCJodHRwczovL2FwaS5vcGVuYWkuY29tL2F1dGgiOnsiY2hhdGdwdF9hY2NvdW50X2lkIjoiMzA4ZWZjMzEtNDA1Zi00Nzg0LWE3YjgtMjkwMWNjMTA2ZTFhIiwiY2hhdGdwdF9hY2NvdW50X3VzZXJfaWQiOiJ1c2VyLVJXd0h3T002VThLQkNWYkN5WXhjRm0yTV9fMzA4ZWZjMzEtNDA1Zi00Nzg0LWE3YjgtMjkwMWNjMTA2ZTFhIiwiY2hhdGdwdF9jb21wdXRlX3Jlc2lkZW5jeSI6Im5vX2NvbnN0cmFpbnQiLCJjaGF0Z3B0X3BsYW5fdHlwZSI6InBsdXMiLCJjaGF0Z3B0X3VzZXJfaWQiOiJ1c2VyLVJXd0h3T002VThLQkNWYkN5WXhjRm0yTSIsInVzZXJfaWQiOiJ1c2VyLVJXd0h3T002VThLQkNWYkN5WXhjRm0yTSJ9LCJodHRwczovL2FwaS5vcGVuYWkuY29tL3Byb2ZpbGUiOnsiZW1haWwiOiJhOTg1ODY2NDAyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlfSwiaWF0IjoxNzczMTE3NjA0LCJpc3MiOiJodHRwczovL2F1dGgub3BlbmFpLmNvbSIsImp0aSI6ImVjN2U4ZTMyLTNlYzItNGNmNC1iN2E1LWM4ZDQ5YTA1NzgzNyIsIm5iZiI6MTc3MzExNzYwNCwicHdkX2F1dGhfdGltZSI6MTc3MzExNzYwMjM5Niwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmVfYWNjZXNzIl0sInNlc3Npb25faWQiOiJhdXRoc2Vzc19aU3B5eE5YZ2UxdlMza3AydlBpNGh4RFEiLCJzbCI6dHJ1ZSwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTEyNTM5OTE2MzY3MzM4NzM0NTkifQ.TsmgBd4Qd2KXAkf_YC8DcideRR2WxdxiB7jC85aCLKC7gRy2E-3a4k9f-G0svQ3kIYrZUNo2dizE1KCoBjdqW2k86q28kGCFeK8Url7JvHQz5eVz2Cr5fB7da9MTuK_AXAs6TI8cjM40TyJXjcZd3-WsT7jyoSkXhwWm6wqnox2SgAhNcdg-MeQnm7iM6XoWIn27hcwiBvm5MiHDOLJ41sE5jQlU-odRfvgVoajClEGGnipUoRJMAiH7Y_1B1Uy0ubFQ_0_gDTuFJYr4ObhmYhpTThxsB1DFjkCskKpykOicO_rkNrnzjsAbWflR33fjKoe6wW9KGvPMUL2ADsZLTEzSbIshWw0-3kT3qC_9q8Mly9Qhd99Zl55640miH6OrNVzmuz6r-PbPan4AaghQmvuKRXCgG9lIfH87ZSKfmrpVCZ4NlUO-rn-vdLFQ46_Hf0gglT-KuT6L7Pun1jvdA7rk94SEYp2U78ZZ0BL1_191hHfS5hsPkzoIEF-jBTrqG_tiK5aPxXqbQofqhxqkZLWhSk2N-oJkEhTBkw-8F743zNy8K_OsLgOBhFmCVYZLvHLrIs4cjcQk6X0JcIurtt-7IM4Us6MiAeIPCvSdBvrfNyEa2Y9RsT3w1F5pGnWttzkyLFUVxAKiQIdAmY8m178W9UZB4Mqp4bdxkyhm_c8",
+      "refresh": "rt_hBIafoxKQIkZUX2_UMDum2Ux0WyCPQFRNIaozl20JRY.PChYr0ShtWSzp8Kd3UzmtVvvamtYf-Nke6RoBgf0Y7Q",
+      "expires": 1773981604822,
+      "accountId": "308efc31-405f-4784-a7b8-2901cc106e1a"
     }
   },
   "lastGood": {
-    "openrouter": "openrouter:default"
+    "openrouter": "openrouter:default",
+    "openai-codex": "openai-codex:default",
+    "minimax-portal": "minimax-portal:default"
   },
   "usageStats": {
     "openrouter:default": {
       "errorCount": 0,
-      "lastUsed": 1772765499449
+      "lastUsed": 1772786157921
+    },
+    "minimax-portal:default": {
+      "errorCount": 0,
+      "lastUsed": 1773071392368
+    },
+    "volcengine:default": {
+      "errorCount": 0,
+      "lastUsed": 1773155790009
+    },
+    "openai-codex:default": {
+      "errorCount": 0,
+      "lastUsed": 1773169345396
     }
   }
 }

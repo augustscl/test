@@ -1,11 +1,11 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.2",
-    "lastTouchedAt": "2026-03-06T02:23:28.891Z"
+    "lastTouchedVersion": "2026.3.7",
+    "lastTouchedAt": "2026-03-10T04:40:36.133Z"
   },
   "wizard": {
-    "lastRunAt": "2026-03-05T13:40:32.723Z",
-    "lastRunVersion": "2026.3.2",
+    "lastRunAt": "2026-03-10T04:40:36.093Z",
+    "lastRunVersion": "2026.3.7",
     "lastRunCommand": "configure",
     "lastRunMode": "local"
   },
@@ -14,24 +14,141 @@
       "openrouter:default": {
         "provider": "openrouter",
         "mode": "api_key"
+      },
+      "minimax-portal:default": {
+        "provider": "minimax-portal",
+        "mode": "oauth"
+      },
+      "volcengine:default": {
+        "provider": "volcengine",
+        "mode": "api_key"
+      },
+      "openai-codex:default": {
+        "provider": "openai-codex",
+        "mode": "oauth"
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "minimax-portal": {
+        "baseUrl": "https://api.minimaxi.com/anthropic",
+        "apiKey": "minimax-oauth",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "MiniMax-M2.5",
+            "name": "MiniMax M2.5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "MiniMax-M2.5-highspeed",
+            "name": "MiniMax M2.5 Highspeed",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "MiniMax-M2.5-Lightning",
+            "name": "MiniMax M2.5 Lightning",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 200000,
+            "maxTokens": 8192
+          }
+        ]
       }
     }
   },
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openrouter/anthropic/claude-opus-4.6"
+        "primary": "volcengine-plan/ark-code-latest",
+        "fallbacks": [
+          "openrouter/auto",
+          "minimax-portal/MiniMax-M2.5",
+          "minimax-portal/MiniMax-M2.5-highspeed",
+          "minimax-portal/MiniMax-M2.5-Lightning",
+          "openrouter/moonshotai/kimi-k2.5",
+          "openai-codex/gpt-5.4",
+          "openai-codex/gpt-5.3-codex-spark",
+          "openai-codex/gpt-5.3-codex",
+          "openai/gpt-5.4-pro",
+          "openai/gpt-5.4",
+          "openai/gpt-5.3-codex-spark",
+          "openai/gpt-5.3-codex",
+          "openai-codex/gpt-5.2-codex"
+        ]
       },
       "models": {
         "openrouter/auto": {
           "alias": "OpenRouter"
-        }
+        },
+        "minimax-portal/MiniMax-M2.5": {
+          "alias": "minimax-m2.5"
+        },
+        "minimax-portal/MiniMax-M2.5-highspeed": {
+          "alias": "minimax-m2.5-highspeed"
+        },
+        "minimax-portal/MiniMax-M2.5-Lightning": {
+          "alias": "minimax-m2.5-lightning"
+        },
+        "openrouter/moonshotai/kimi-k2.5": {},
+        "volcengine-plan/ark-code-latest": {},
+        "openai-codex/gpt-5.4": {
+          "params": {
+            "transport": "sse"
+          }
+        },
+        "openai-codex/gpt-5.3-codex-spark": {},
+        "openai-codex/gpt-5.3-codex": {},
+        "openai/gpt-5.4-pro": {},
+        "openai/gpt-5.4": {},
+        "openai/gpt-5.3-codex-spark": {},
+        "openai/gpt-5.3-codex": {},
+        "openai-codex/gpt-5.2-codex": {}
       },
       "workspace": "/Users/suchuanlei/.openclaw/workspace",
       "compaction": {
         "mode": "safeguard"
       },
       "verboseDefault": "off",
+      "heartbeat": {
+        "every": "4h",
+        "activeHours": {
+          "start": "07:00",
+          "end": "00:00"
+        },
+        "target": "feishu"
+      },
       "maxConcurrent": 4,
       "subagents": {
         "maxConcurrent": 8
@@ -40,11 +157,6 @@
   },
   "tools": {
     "profile": "full",
-    "allow": [
-      "bash",
-      "read",
-      "write"
-    ],
     "web": {
       "search": {
         "enabled": true
@@ -85,11 +197,19 @@
   "channels": {
     "feishu": {
       "enabled": true,
-      "appId": "cli_a92380c1e3f85bca",
-      "appSecret": "5bFxRJ5BrZgTgALTj3f2Th0Nnmdyb3mx",
+      "appId": "cli_a92027f8bbb85bc6",
+      "appSecret": "qHbubWguafLFd1NppHnXcdIDXf84WXl4",
       "connectionMode": "websocket",
       "domain": "feishu",
-      "groupPolicy": "open"
+      "groupPolicy": "open",
+      "dmPolicy": "pairing",
+      "streaming": true,
+      "footer": {
+        "elapsed": true,
+        "status": true
+      },
+      "requireMention": false,
+      "textChunkLimit": 1000
     }
   },
   "gateway": {
@@ -117,24 +237,34 @@
     }
   },
   "plugins": {
+    "allow": [
+      "minimax-portal-auth",
+      "feishu-openclaw-plugin"
+    ],
     "entries": {
+      "minimax-portal-auth": {
+        "enabled": true
+      },
       "feishu": {
+        "enabled": false
+      },
+      "feishu-openclaw-plugin": {
         "enabled": true
       }
     },
     "installs": {
-      "feishu": {
+      "feishu-openclaw-plugin": {
         "source": "npm",
-        "spec": "@openclaw/feishu",
-        "installPath": "/Users/suchuanlei/.openclaw/extensions/feishu",
-        "version": "2026.3.2",
-        "resolvedName": "@openclaw/feishu",
-        "resolvedVersion": "2026.3.2",
-        "resolvedSpec": "@openclaw/feishu@2026.3.2",
-        "integrity": "sha512-CpwjmLCS8gpZ5fFCRiEA+1i/L+E73Vhz5//TiwQjWJOtVPZEu44db294g3HUR6nB5L0IEpZgKU/JU69HgYl77w==",
-        "shasum": "ad77e27633b480f5c815e1922252a2f07c1765bd",
-        "resolvedAt": "2026-03-05T10:21:44.810Z",
-        "installedAt": "2026-03-05T10:21:54.884Z"
+        "spec": "@larksuiteoapi/feishu-openclaw-plugin",
+        "installPath": "/Users/suchuanlei/.openclaw/extensions/feishu-openclaw-plugin",
+        "version": "2026.3.8",
+        "resolvedName": "@larksuiteoapi/feishu-openclaw-plugin",
+        "resolvedVersion": "2026.3.8",
+        "resolvedSpec": "@larksuiteoapi/feishu-openclaw-plugin@2026.3.8",
+        "integrity": "sha512-77PzCEESdPgqL9jgoV8I3difKOuC/iRiECYLUT+2rLRD1Oy+CHtTXuYwHwztHvbY2sWitev/5rN/TseDHo2FVg==",
+        "shasum": "d4acc5a0433aaf77b0d87a028fa627b38efdb4cd",
+        "resolvedAt": "2026-03-09T07:37:15.888Z",
+        "installedAt": "2026-03-09T07:37:22.781Z"
       }
     }
   }

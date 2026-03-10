@@ -7,7 +7,7 @@
       "description": "每晚安全巡检 (慢雾指南 v2.7 macOS 适配版)",
       "enabled": true,
       "createdAtMs": 1772765101310,
-      "updatedAtMs": 1772765101310,
+      "updatedAtMs": 1773083100075,
       "schedule": {
         "kind": "cron",
         "expr": "0 3 * * *",
@@ -19,14 +19,59 @@
         "kind": "agentTurn",
         "message": "Execute this command and output the result as-is, no extra commentary: bash ~/.openclaw/workspace/scripts/nightly-security-audit.sh",
         "thinking": "off",
-        "timeoutSeconds": 300
+        "timeoutSeconds": 300,
+        "model": "openai-codex/gpt-5.4"
       },
       "delivery": {
         "mode": "announce",
-        "channel": "last"
+        "channel": "feishu",
+        "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1"
       },
       "state": {
-        "nextRunAtMs": 1772823600000
+        "nextRunAtMs": 1773169200000,
+        "lastRunAtMs": 1773082800023,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 300052,
+        "lastDeliveryStatus": "unknown",
+        "consecutiveErrors": 1,
+        "runningAtMs": 1773169200008
+      }
+    },
+    {
+      "id": "e01f28a4-78ff-45c3-a091-c9793aa59e44",
+      "name": "git-backup-daily",
+      "description": "每天03:30巡检后自动Git备份workspace",
+      "enabled": true,
+      "createdAtMs": 1772766926578,
+      "updatedAtMs": 1773084900095,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 3 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "isolated",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "message": "在 workspace 目录执行 git add -A，如果有变更就 git commit -m '🦐 每日自动备份' 并 git push。没有变更就跳过，不用多说。",
+        "timeoutSeconds": 300,
+        "model": "openai-codex/gpt-5.4"
+      },
+      "delivery": {
+        "mode": "announce",
+        "channel": "feishu",
+        "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1"
+      },
+      "state": {
+        "nextRunAtMs": 1773171000000,
+        "lastRunAtMs": 1773084600038,
+        "lastRunStatus": "error",
+        "lastStatus": "error",
+        "lastDurationMs": 300057,
+        "lastDeliveryStatus": "unknown",
+        "consecutiveErrors": 1,
+        "lastError": "cron: job execution timed out"
       }
     }
   ]

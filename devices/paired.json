@@ -28,7 +28,8 @@
           "operator.admin"
         ],
         "createdAtMs": 1772706230361,
-        "rotatedAtMs": 1772706274173
+        "rotatedAtMs": 1772706274173,
+        "lastUsedAtMs": 1773117487225
       }
     },
     "createdAtMs": 1772706230361,
@@ -64,7 +65,7 @@
           "operator.pairing"
         ],
         "createdAtMs": 1772706861311,
-        "lastUsedAtMs": 1772764125394
+        "lastUsedAtMs": 1772962417690
       }
     },
     "createdAtMs": 1772706861310,

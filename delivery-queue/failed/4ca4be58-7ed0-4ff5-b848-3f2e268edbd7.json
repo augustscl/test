@@ -1,0 +1,20 @@
+{
+  "id": "4ca4be58-7ed0-4ff5-b848-3f2e268edbd7",
+  "enqueuedAt": 1773023073837,
+  "channel": "feishu",
+  "to": "heartbeat",
+  "payloads": [
+    {
+      "text": "备份成功！提交了 9 个文件，已推送到远程仓库。子模块和 my-novel-project/ 跳过了。"
+    }
+  ],
+  "threadId": null,
+  "mirror": {
+    "sessionKey": "agent:main:feishu:direct:heartbeat",
+    "agentId": "main",
+    "text": "备份成功！提交了 9 个文件，已推送到远程仓库。子模块和 my-novel-project/ 跳过了。"
+  },
+  "retryCount": 5,
+  "lastAttemptAt": 1773030809994,
+  "lastError": "Request failed with status code 400"
+}

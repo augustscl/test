@@ -1,0 +1,20 @@
+{
+  "id": "6e7c764b-11f1-4312-a837-74b41ce0a77d",
+  "enqueuedAt": 1772910003323,
+  "channel": "feishu",
+  "to": "heartbeat",
+  "payloads": [
+    {
+      "text": "403 Key limit exceeded (total limit). Manage it using https://openrouter.ai/settings/keys"
+    }
+  ],
+  "threadId": null,
+  "mirror": {
+    "sessionKey": "agent:main:feishu:direct:heartbeat",
+    "agentId": "main",
+    "text": "403 Key limit exceeded (total limit). Manage it using https://openrouter.ai/settings/keys"
+  },
+  "retryCount": 5,
+  "lastAttemptAt": 1773030808737,
+  "lastError": "Request failed with status code 400"
+}
