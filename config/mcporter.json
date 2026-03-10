@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "flomo": {
+      "baseUrl": "https://flomoapp.com/mcp",
+      "description": "flomo MCP (Streamable HTTP, OAuth)",
+      "auth": "oauth"
+    }
+  },
+  "imports": []
+}
