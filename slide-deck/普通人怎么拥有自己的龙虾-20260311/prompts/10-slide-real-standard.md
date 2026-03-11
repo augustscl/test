@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 真正的龙虾，不是会回话，而是会交付. Checklist comparison design: 表面完成 vs 真实交付. Include examples such as sent file, playable voice, created doc, published draft, generated PPT. Strong contrast, crisp Chinese typography, black/white base with vivid accents.

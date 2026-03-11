@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 今天有卡顿，有翻车，有挨骂，但最后还是把事推成了. Emotional ending slide with lobster mascot and creator sitting amid scattered notes that have finally connected into order. Warm, human, slightly proud, memorable closing image.

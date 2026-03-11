@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 案例二：发语音——从生成音频到真正发出语音条. Split comparison layout: left side shows raw audio generation, right side shows successful Feishu voice message delivery with correct protocol and voice identity. Include waveform graphics, upload arrows, message bubble UI, and lobster mascot. Clear, technical but beautiful, Chinese readable.

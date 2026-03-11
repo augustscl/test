@@ -1,0 +1,1 @@
+Create a 16:9 Chinese presentation slide in bold-editorial style. Title: “PPT 生产线全开：多模型、多版本、全链路打通”. Show a flowchart: outline -> prompts -> image generation -> baoyu-slide-deck merge -> JPG compression -> final PPT delivery. Include labels DashScope, Google, PPTX, JPG. Make it look like a premium production pipeline dashboard, vibrant, systematic, Chinese text clear.

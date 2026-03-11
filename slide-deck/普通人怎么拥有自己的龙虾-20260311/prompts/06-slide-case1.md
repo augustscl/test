@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 案例一：查笔记——从一句话到真的接上系统. Flowchart layout: user request -> note skill -> credentials -> real note retrieval. Show knowledge cards, search, API connection, and a result panel. Add lobster mascot as the trained assistant. Practical, systematic, Chinese readable, keynote-level.

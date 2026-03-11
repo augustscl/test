@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 这套方法，最适合三类人. Show three cards for 内容人, 运营人, 产品人, each with matching iconography and concise benefit statement. Modern editorial design, balanced spacing, Chinese readable, presentation-ready.

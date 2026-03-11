@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 能力落地的底层，不是模型，是五个闭环. Center visual: a big circular hand-drawn loop diagram with five labeled nodes: 需求闭环、技能闭环、记忆闭环、执行闭环、纠错闭环. Use colorful arrows, sticky notes, icons, and doodles. Include 虾王 standing proudly at the center like a mascot guide. Highly visual, educational, hand-crafted.

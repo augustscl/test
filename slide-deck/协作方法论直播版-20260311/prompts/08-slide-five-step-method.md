@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 给观众带走的五步法. Show five large numbered blocks or cards: 真实需求, 配能力组件, 跑通一次, 写进记忆, 验证稳定性. Use bold numbers, arrows, compact explanations, strong teaching feel, high readability, keynote-style Chinese slide.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 什么叫“龙虾”？. Big handwritten quote: 不是聊天工具，而是你的数字搭子 / AI 分身. Surround with doodles for 记住你、理解你、帮你做事、越用越顺手. Include lively lobster mascot. Educational, warm, highly readable.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in magazine-poster style. Title: 案例二：发语音——从生成音频到真正发出语音条. Dynamic poster composition with waveforms, voice message UI, protocol arrows, and iconic lobster accent. Strong contrast, premium magazine energy.

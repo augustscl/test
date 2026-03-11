@@ -1,0 +1,1 @@
+Create a 16:9 Chinese presentation slide in bold-editorial style. Title: “这一天到底干了什么？”. Show four modules in a strong editorial grid: Getnote skill setup, interview analysis, voice cloning, live script + PPT generation. Use numbered cards, vibrant blue and orange accents, modern infographics, Chinese text readable, premium magazine-like layout, no watermark.

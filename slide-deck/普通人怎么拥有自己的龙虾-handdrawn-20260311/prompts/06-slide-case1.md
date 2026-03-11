@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 案例一：查笔记——从一句话到真的接上系统. Show a hand-drawn flowchart: request -> note skill -> credentials -> real note retrieval. Include notebook and API doodles, plus lobster mascot as helper.

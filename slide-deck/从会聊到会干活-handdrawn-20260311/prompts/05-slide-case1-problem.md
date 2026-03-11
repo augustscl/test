@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 案例一：为什么“查笔记”一开始做不到？. Show a messy whiteboard with four hand-written blockers: 需求模糊, 没有技能, 没有凭证, 没有记忆. Add scattered sticky notes, crossed-out ideas, and a puzzled 虾王 scratching his head with one claw. Marker-pen annotations, paper texture, educational and lively.

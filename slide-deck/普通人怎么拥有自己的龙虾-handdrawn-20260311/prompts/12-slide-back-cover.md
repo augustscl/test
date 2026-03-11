@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 最早拥有龙虾的人，会更早拥有新的工作方式. Elegant back cover with lobster mascot, stars, arrows, and notebook doodles. Minimal text, memorable ending image.

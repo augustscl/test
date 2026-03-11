@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 今天其实有三条主线同时推进. Three illustrated cards: 内容生产线, 方法论生长, 执行方式校准. Each has its own doodle scene. Include small lobster mascot guiding through the three lines. Notebook style, colorful, clear Chinese.

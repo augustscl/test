@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 今天只讲三个真案例. Show three large illustrated cards: 查笔记, 发语音, 发公众号. Each card has a playful hand-drawn icon and a small scene. 虾王 appears as a tour guide dragging the audience across the three cases with arrows and doodles. Warm, expressive, readable, strong handmade presentation feel.

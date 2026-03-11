@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in magazine-poster style. Title: 为什么大多数人还没有自己的龙虾？. Four bold editorial panels or poster blocks with blockers: 只会提问, 不会接能力, 没有长期记忆, 一翻车就换. Stylish, dramatic, readable.

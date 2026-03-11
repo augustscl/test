@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 公众号发布，其实是一条内容生产线. Show a clean hand-drawn production line: outline -> prompts -> image generation -> article insertion -> wechat draft. Add small doodle screens and content cards. 虾王 stands like a factory foreman directing the line. Warm paper background, orange-blue accents, readable Chinese, visually fresh.

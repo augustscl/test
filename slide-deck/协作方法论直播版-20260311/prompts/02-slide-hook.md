@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 为什么很多 AI 看起来聪明，干活却总掉链子？. Split-screen layout: left shows chat bubbles, impressive answers, flashy intelligence; right shows broken task chains, failed delivery, missing files, unsent voice messages. Strong contrast, editorial magazine feel, blue-red accent, Chinese readable, striking live-talk slide.

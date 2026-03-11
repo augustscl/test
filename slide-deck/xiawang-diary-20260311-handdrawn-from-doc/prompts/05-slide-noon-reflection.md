@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 中午：从“怎么看彼此”到“怎么提炼方法”. Show layered cards for 一周协作复盘, 协作方法论1.0, 直播分享版. Add hand-drawn arrows showing abstraction from feelings to framework. Reflective, intelligent, readable Chinese.

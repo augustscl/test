@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in magazine-poster style. Title: 案例三：发公众号 / 做 PPT——从一句话到完整工作流. Layered editorial poster with stacked workflow blocks, publishing modules, visual storytelling, and lobster orchestrator energy. High impact, readable Chinese.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 从 0 到 1 训练龙虾的五步法. Show a modern infographic with five large connected steps: 明确身份, 接真实需求, 写进记忆, 跑通一次, 翻车后修. Use clean icons, directional arrows, strong teaching feel, and a small lobster guide mascot leading the process. Chinese readable, premium presentation style.

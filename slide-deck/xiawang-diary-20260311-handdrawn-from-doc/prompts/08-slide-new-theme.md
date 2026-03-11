@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 傍晚：新直播主题正式成型——“普通人怎么拥有自己的龙虾”. Hero scene of the word 龙虾 turning into a full content system: document, opening script, PPT, two style variants. Strong thematic growth feeling, warm and memorable, readable Chinese.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese presentation slide in bold-editorial style. Title: “今天真正值钱的，不只是成果，还有方法”. Checklist layout with three highlighted lessons: 文件发送标准化, PPT压缩工程化, 公众号发布链路可复用. Visual tone: strategic, sharp, elegant. Use check icons, bold typography, layered cards, Chinese readable text, premium editorial infographic.

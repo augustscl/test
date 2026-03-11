@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 你该怎么判断一个 AI 是不是“会干活”？. Focus on a bold central quote area with handwritten emphasis: 不是看它答得多漂亮，而是看它能不能稳定交付结果. Surround with small examples, check marks, repeatability arrows, and delivery icons. 虾王 crosses his claws confidently like a judge. Strong quote-focused slide, memorable and sharp.

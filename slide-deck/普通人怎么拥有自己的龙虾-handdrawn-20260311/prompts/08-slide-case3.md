@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 案例三：发公众号 / 做 PPT——从一句话到完整工作流. Layered sketch workflow: article, outline, prompts, images, PPT, publish. Lobster orchestrates the chain. Warm, expressive, readable.

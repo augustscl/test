@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 案例一：查笔记——从“没有能力”到“真的能查”. Visualize a workflow from vague request to skill access to API config to successful note retrieval. Include notebook/search/database motifs. Make it feel like a practical systems case study, with structured flowchart and strong Chinese labels.

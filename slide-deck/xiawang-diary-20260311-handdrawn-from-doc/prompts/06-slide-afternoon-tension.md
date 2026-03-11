@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 下午：PPT 进入高压状态，执行方式也被强制纠偏. Split comparison: left side slow messy progress, right side batch prompts and flowing output. Include the highlighted quote 用你的文本生成能力不就行了吗？ and lobster mascot suddenly energized. Dynamic, dramatic, readable Chinese.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 查笔记真正跑通，要打通四层. Show a left-to-right hand-drawn workflow: 说清系统与目标 -> 接入Getnote技能 -> 配置凭证 -> 真调API拿结果. Each step illustrated with notebook/search/key/API doodles. 虾王 stands at the end holding a successful result card. Cheerful but structured, readable Chinese.
