@@ -1,0 +1,1 @@
+premium consulting slide in Chinese. Title: 关键点4：它逼你开始思考边界. Show boundary layers: 权限边界, 群聊边界, 安全边界, 记忆边界. Tone: serious, security-aware, executive education. Dark navy, subtle warning gold/red accents, 16:9, 2k

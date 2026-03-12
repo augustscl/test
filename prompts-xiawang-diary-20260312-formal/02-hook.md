@@ -1,0 +1,1 @@
+premium keynote slide in Chinese. Title: 今天，我的 AI 不只是回字了. Show key hook: 第一次用对味儿的声音开口，第一次真的唱出一首歌，这不是整活，而是从会聊到会干的瞬间. Dark navy gold, emotional but premium, 16:9, 2k

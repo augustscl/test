@@ -1,0 +1,1 @@
+premium keynote slide in Chinese. Title: 学 OpenClaw 最关键的7点. Elegant numbered list, strategic training style. Emphasize: 先打通链路、先立边界、记忆落文件、Skill 稳定优先、文档资产化、玩法背后是链路成熟、学习拥有个人智能体的方法. 16:9, 2k

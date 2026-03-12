@@ -1,0 +1,1 @@
+premium corporate closing slide in Chinese. Title: 结尾：未来真正有价值的人，会养 AI. Highlight quote: 未来真正有价值的，不是会问 AI 的人，而是会拥有、会训练、会进化自己 AI 的人. Strong closing visual of AI workflow empire / command center, elegant dramatic keynote finish, dark navy gold, 16:9, 2k

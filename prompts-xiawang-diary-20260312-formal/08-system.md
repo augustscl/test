@@ -1,0 +1,1 @@
+premium consulting slide in Chinese. Title: 唱歌这件事，表面是玩法，底层是系统能力. Show stack: skill, API, network, file generation, message sending, reusable outputs. Executive systems architecture style, 16:9, 2k

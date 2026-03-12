@@ -1,0 +1,1 @@
+premium strategy slide in Chinese. Title: 语音链路终于被打通. Show pipeline: 参考音 -> WAV -> ffmpeg -> Ogg/Opus -> duration -> 飞书audio. Clean systems diagram, mature workflow feeling, dark navy gold, 16:9, 2k

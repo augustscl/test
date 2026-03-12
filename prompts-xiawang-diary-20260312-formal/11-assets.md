@@ -1,0 +1,1 @@
+premium corporate slide in Chinese. Title: 今天做的，不只是内容，而是资产. Show outputs: 长稿, PPT, 配图, 日记, 歌曲 -> all becoming reusable assets. Strategic content system visual, 16:9, 2k
