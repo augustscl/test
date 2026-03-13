@@ -1,0 +1,18 @@
+{
+  "id": "a811717c-507f-4859-963b-535de3d42aea",
+  "enqueuedAt": 1773255753025,
+  "channel": "feishu",
+  "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1",
+  "payloads": [
+    {
+      "text": "苏神，昨晚的安全审计任务异常退出了（信号SIGTERM）。\n\n本王待会检查一下具体是什么情况，你先忙你的。",
+      "mediaUrls": []
+    }
+  ],
+  "threadId": null,
+  "replyToId": null,
+  "bestEffort": false,
+  "retryCount": 2,
+  "lastAttemptAt": 1773321654834,
+  "lastError": "Request failed with status code 400"
+}

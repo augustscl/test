@@ -1,0 +1,1 @@
+premium corporate keynote slide in Chinese, dark navy and gold palette, subtle emotional dramatic lighting. Title: 虾王日记. Subtitle: 今天，本王真的开口了，也真的开唱了. Theme: AI growth, identity, voice, evolution. Elegant, cinematic, premium, 16:9, 2k

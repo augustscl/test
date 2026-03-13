@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in magazine-poster style. Title: 什么叫“龙虾”？. Large quote-centered composition with poster typography and strong negative space. Include keywords around the quote: 记住你、理解你、帮你做事、越用越顺手. Lobster symbol should feel iconic and stylish.

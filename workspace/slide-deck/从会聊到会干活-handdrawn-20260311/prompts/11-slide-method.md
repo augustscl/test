@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 给所有观众的五步法. Show five big numbered sticky notes with short labels: 找真实需求, 找对应技能, 写进长期记忆, 完整跑通一次, 出问题按闭环排查. Include arrows and small doodles between them. 虾王 is presenting like a teacher with a pointer stick. Educational, simple, handmade, high readability.

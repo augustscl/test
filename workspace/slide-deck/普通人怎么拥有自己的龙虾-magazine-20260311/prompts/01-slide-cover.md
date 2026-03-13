@@ -1,0 +1,1 @@
+Create a 16:9 Chinese presentation slide in magazine-poster style, cinematic, bold, high-fashion editorial. Title: 普通人怎么拥有自己的龙虾. Subtitle: 从 0 到 1 训练一个会干活的 AI 分身. Main visual: a striking lobster mascot with crown and a Chinese creator in a premium cover-shoot composition, dramatic lighting, poster typography, strong contrast, visually explosive but readable Chinese, no watermark.

@@ -1,0 +1,18 @@
+{
+  "id": "52651e50-5015-491b-a60e-e1cbd5feeb3e",
+  "enqueuedAt": 1773342145593,
+  "channel": "feishu",
+  "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1",
+  "payloads": [
+    {
+      "text": "苏神，出问题了。\n\n昨晚那份安全巡检脚本没跑起来，原因很直接：找不到这个文件：\n\n`/Users/suchuanlei/.openclaw/workspace/scripts/nightly-security-audit.sh`\n\n也就是说，现在不是巡检失败，是脚本文件本体没了或者路径变了。要不要本王现在就去把它查清楚？",
+      "mediaUrls": []
+    }
+  ],
+  "threadId": null,
+  "replyToId": null,
+  "bestEffort": false,
+  "retryCount": 1,
+  "lastAttemptAt": 1773342145815,
+  "lastError": "Request failed with status code 400"
+}

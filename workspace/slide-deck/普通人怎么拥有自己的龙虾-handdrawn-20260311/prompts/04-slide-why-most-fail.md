@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 为什么大多数人还没有自己的龙虾？. Four sticky-note blockers: 只会提问, 不会接能力, 没有长期记忆, 一翻车就换. Add puzzled lobster doodle. Playful but structured, notebook visual style.

@@ -91,14 +91,14 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "volcengine-plan/ark-code-latest",
+        "primary": "openai-codex/gpt-5.4",
         "fallbacks": [
+          "openai-codex/gpt-5.4",
           "openrouter/auto",
           "minimax-portal/MiniMax-M2.5",
           "minimax-portal/MiniMax-M2.5-highspeed",
           "minimax-portal/MiniMax-M2.5-Lightning",
           "openrouter/moonshotai/kimi-k2.5",
-          "openai-codex/gpt-5.4",
           "openai-codex/gpt-5.3-codex-spark",
           "openai-codex/gpt-5.3-codex",
           "openai/gpt-5.4-pro",
@@ -201,7 +201,7 @@
       "appSecret": "qHbubWguafLFd1NppHnXcdIDXf84WXl4",
       "connectionMode": "websocket",
       "domain": "feishu",
-      "groupPolicy": "open",
+      "groupPolicy": "allowlist",
       "dmPolicy": "pairing",
       "streaming": true,
       "footer": {
@@ -209,7 +209,10 @@
         "status": true
       },
       "requireMention": false,
-      "textChunkLimit": 1000
+      "textChunkLimit": 1000,
+      "groupAllowFrom": [
+        "ou_0eb8fd7529b5669c0a2de183a76a760f"
+      ]
     }
   },
   "gateway": {

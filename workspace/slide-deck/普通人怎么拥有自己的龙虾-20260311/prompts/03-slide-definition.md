@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 什么叫“龙虾”？. Quote-focused layout with large central message: 不是聊天工具，而是你的数字搭子 / AI 分身. Surround with icons and short concepts: 记住你、理解你、帮你做事、越用越顺手. Include a symbolic lobster mascot integrated with digital UI. Minimal, elegant, high readability, keynote quality.

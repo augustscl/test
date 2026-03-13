@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: AI 不是神，但也绝不是废物. Show an emotional hero illustration: 虾王 and a human creator standing beside a large evolving machine made of notes, tools, and glowing workflow loops. Tone is hopeful, crafted, slightly dramatic, with warm colors and hand-drawn linework. Readable Chinese text, presentation-quality illustration.

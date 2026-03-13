@@ -1,0 +1,18 @@
+{
+  "id": "ef72a634-089a-4e04-a19d-6ae3848ea29e",
+  "enqueuedAt": 1773255753271,
+  "channel": "feishu",
+  "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1",
+  "payloads": [
+    {
+      "text": "Process exited with signal SIGTERM.",
+      "replyToTag": false,
+      "replyToCurrent": false,
+      "audioAsVoice": false
+    }
+  ],
+  "bestEffort": false,
+  "retryCount": 2,
+  "lastAttemptAt": 1773321655106,
+  "lastError": "Request failed with status code 400"
+}

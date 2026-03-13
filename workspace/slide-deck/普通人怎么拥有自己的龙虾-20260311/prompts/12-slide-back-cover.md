@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 最早拥有龙虾的人，会更早拥有新的工作方式. Back-cover slide with centered quote composition, elegant dark blue background, glowing typography, subtle lobster symbol, workflow motifs, and premium Chinese presentation aesthetic. Strong ending image, memorable and refined.

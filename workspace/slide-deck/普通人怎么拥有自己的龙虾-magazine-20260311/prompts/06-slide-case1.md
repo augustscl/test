@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in magazine-poster style. Title: 案例一：查笔记——从一句话到真的接上系统. Poster-style flow visualization with notebook, API, cards, and result panels. Strong editorial composition, bold Chinese labels, stylish and practical.

@@ -1,0 +1,32 @@
+2026/03/12-21:36:18.615 7cfd33 Creating DB /Users/suchuanlei/.openclaw/browser/openclaw/user-data/Default/IndexedDB/https_pugmarp5va.feishu.cn_0.indexeddb.leveldb since it was missing.
+2026/03/12-21:36:18.618 7cfd33 Reusing MANIFEST /Users/suchuanlei/.openclaw/browser/openclaw/user-data/Default/IndexedDB/https_pugmarp5va.feishu.cn_0.indexeddb.leveldb/MANIFEST-000001
+2026/03/12-21:53:20.968 7cfd35 Level-0 table #5: started
+2026/03/12-21:53:20.985 7cfd35 Level-0 table #5: 1385587 bytes OK
+2026/03/12-21:53:20.987 7cfd35 Delete type=0 #3
+2026/03/12-21:54:17.290 7cfd35 Level-0 table #7: started
+2026/03/12-21:54:17.299 7cfd35 Level-0 table #7: 1089763 bytes OK
+2026/03/12-21:54:17.301 7cfd35 Delete type=0 #4
+2026/03/12-21:54:33.780 7cfd33 Compacting 1@1 + 1@2 files
+2026/03/12-21:54:33.792 7cfd33 Generated table #8@1: 1187 keys, 167950 bytes
+2026/03/12-21:54:33.792 7cfd33 Compacted 1@1 + 1@2 files => 167950 bytes
+2026/03/12-21:54:33.795 7cfd33 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/03/12-21:54:33.795 7cfd33 Delete type=2 #7
+2026/03/12-21:54:33.795 7cfd33 Delete type=2 #5
+2026/03/12-22:07:50.096 7cfd35 Level-0 table #10: started
+2026/03/12-22:07:50.112 7cfd35 Level-0 table #10: 1096662 bytes OK
+2026/03/12-22:07:50.114 7cfd35 Delete type=0 #6
+2026/03/12-22:11:26.485 7cfd33 Compacting 1@1 + 1@2 files
+2026/03/12-22:11:26.496 7cfd33 Generated table #11@1: 1814 keys, 249949 bytes
+2026/03/12-22:11:26.496 7cfd33 Compacted 1@1 + 1@2 files => 249949 bytes
+2026/03/12-22:11:26.498 7cfd33 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/03/12-22:11:26.498 7cfd33 Delete type=2 #10
+2026/03/12-22:11:26.498 7cfd33 Delete type=2 #8
+2026/03/12-22:37:44.944 7cfd35 Level-0 table #13: started
+2026/03/12-22:37:44.957 7cfd35 Level-0 table #13: 1419916 bytes OK
+2026/03/12-22:37:44.959 7cfd35 Delete type=0 #9
+2026/03/12-22:38:06.017 7cfd33 Compacting 1@1 + 1@2 files
+2026/03/12-22:38:06.029 7cfd33 Generated table #14@1: 2343 keys, 354989 bytes
+2026/03/12-22:38:06.029 7cfd33 Compacted 1@1 + 1@2 files => 354989 bytes
+2026/03/12-22:38:06.034 7cfd33 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/03/12-22:38:06.034 7cfd33 Delete type=2 #13
+2026/03/12-22:38:06.034 7cfd33 Delete type=2 #11

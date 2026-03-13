@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 真正的龙虾，不是会回话，而是会交付. Comparison checklist between 表面完成 and 真实交付. Include doodles of files, voice, doc, ppt, publish. Strong handwritten emphasis.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 你缺的不是一个更聪明的 AI，而是一只真正属于你的龙虾. Emotional ending illustration of creator and lobster companion beside a mature digital system. Warm, inspiring, hand-drawn.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in magazine-poster style. Title: 你缺的不是一个更聪明的 AI，而是一只真正属于你的龙虾. Hero editorial ending with creator + lobster companion as iconic cover duo. Emotional, premium, poster-like, bold typography.

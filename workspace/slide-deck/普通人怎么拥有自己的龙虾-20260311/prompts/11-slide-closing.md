@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 你缺的不是一个更聪明的 AI，而是一只真正属于你的龙虾. Hero ending slide with creator and lobster companion standing in front of a transformed digital work system made of memory, workflows, documents, and tools. Emotional, empowering, polished keynote ending, Chinese readable, not cheesy.

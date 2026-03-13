@@ -7,7 +7,7 @@
       "description": "每晚安全巡检 (慢雾指南 v2.7 macOS 适配版)",
       "enabled": true,
       "createdAtMs": 1772765101310,
-      "updatedAtMs": 1773083100075,
+      "updatedAtMs": 1773360150900,
       "schedule": {
         "kind": "cron",
         "expr": "0 3 * * *",
@@ -17,7 +17,7 @@
       "wakeMode": "now",
       "payload": {
         "kind": "agentTurn",
-        "message": "Execute this command and output the result as-is, no extra commentary: bash ~/.openclaw/workspace/scripts/nightly-security-audit.sh",
+        "message": "Execute this command and output the result as-is, no extra commentary: bash /Users/suchuanlei/.openclaw/workspace/scripts/nightly-security-audit.sh",
         "thinking": "off",
         "timeoutSeconds": 300,
         "model": "openai-codex/gpt-5.4"
@@ -25,17 +25,18 @@
       "delivery": {
         "mode": "announce",
         "channel": "feishu",
-        "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1"
+        "to": "user:ou_0eb8fd7529b5669c0a2de183a76a760f",
+        "bestEffort": true
       },
       "state": {
-        "nextRunAtMs": 1773169200000,
-        "lastRunAtMs": 1773082800023,
+        "nextRunAtMs": 1773428400000,
+        "lastRunAtMs": 1773359850874,
         "lastRunStatus": "error",
         "lastStatus": "error",
-        "lastDurationMs": 300052,
+        "lastDurationMs": 300026,
         "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 1,
-        "runningAtMs": 1773169200008
+        "consecutiveErrors": 5,
+        "lastError": "Error: cron: job execution timed out"
       }
     },
     {
@@ -44,7 +45,7 @@
       "description": "每天03:30巡检后自动Git备份workspace",
       "enabled": true,
       "createdAtMs": 1772766926578,
-      "updatedAtMs": 1773084900095,
+      "updatedAtMs": 1773360152201,
       "schedule": {
         "kind": "cron",
         "expr": "30 3 * * *",
@@ -61,17 +62,18 @@
       "delivery": {
         "mode": "announce",
         "channel": "feishu",
-        "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1"
+        "to": "user:ou_0eb8fd7529b5669c0a2de183a76a760f",
+        "bestEffort": true
       },
       "state": {
-        "nextRunAtMs": 1773171000000,
-        "lastRunAtMs": 1773084600038,
+        "nextRunAtMs": 1773430200000,
+        "lastRunAtMs": 1773359852177,
         "lastRunStatus": "error",
         "lastStatus": "error",
-        "lastDurationMs": 300057,
+        "lastDurationMs": 300024,
         "lastDeliveryStatus": "unknown",
-        "consecutiveErrors": 1,
-        "lastError": "cron: job execution timed out"
+        "consecutiveErrors": 5,
+        "lastError": "Error: cron: job execution timed out"
       }
     }
   ]

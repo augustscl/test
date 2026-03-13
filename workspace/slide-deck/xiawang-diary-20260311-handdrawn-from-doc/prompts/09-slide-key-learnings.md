@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 今天最值得记住的四件事. Four numbered sticky notes: 方法论成型, 执行方式影响效率, 语音规则更清楚, 龙虾变成主题资产. Include neat arrows and thoughtful doodles. Highly readable Chinese.

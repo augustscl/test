@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 你不是在用工具，而是在训练一个工作系统. Hero slide with creator + digital assistant ecosystem around them: memory, workflows, tools, feedback loops. Emotional but sharp, polished keynote ending, readable Chinese, inspirational without being cheesy.

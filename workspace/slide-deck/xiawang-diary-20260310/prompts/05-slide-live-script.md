@@ -1,0 +1,1 @@
+Create a 16:9 Chinese presentation slide in bold-editorial style. Title: “直播稿成型：从想法到结构化表达”. Show a central document titled《从“会聊”到“会干活”》with three branches: 5个闭环, 3个案例, 1套方法论. Add Feishu doc interface feeling, elegant charts and content blocks, editorial magazine composition, high readability, Chinese text only.

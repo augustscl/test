@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 发公众号，难的不是工具，是编排. Show a chaotic desk scene with article pages, PPT thumbnails, image placeholders, color swatches, theme choices, and a draft box. Everything feels busy but explainable. 虾王 looks serious, organizing the mess with arrows. Hand-drawn layered process feel, Chinese readable, dynamic composition.

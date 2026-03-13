@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 上午：昨天的事，不只是续上，而是正式收口. Hand-drawn flowchart with three steps: 写推文, 跑通PPT生产线, 送达公众号草稿箱. Add article, slide, and publishing doodles. Practical and warm.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 语音这条线：不是没做成，而是规则被重新锚定. Checklist layout with three highlighted rules: 普通音频≠语音条, 默认音色不能乱用, 正确参考样本必须写死. Waveform doodles, voice bubble, and warning markers. Clear, educational, notebook style.

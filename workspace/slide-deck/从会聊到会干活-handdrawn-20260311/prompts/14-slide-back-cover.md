@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 会聊只是起点，会干活才叫本事. Back cover with 虾王 as the main mascot, tiny crown, confident pose, one claw raised, surrounded by hand-drawn stars, arrows, and notebook doodles. Add subtle reference to 苏神 × 虾王 partnership. Elegant warm paper texture, minimal text, strong ending image, unique and memorable.

@@ -1,3 +1,18 @@
-2026/03/10-20:44:23.412 5d07a8 Reusing MANIFEST /Users/suchuanlei/.openclaw/browser/openclaw/user-data/Default/Local Storage/leveldb/MANIFEST-000001
-2026/03/10-20:44:23.415 5d07a8 Recovering log #9
-2026/03/10-20:44:23.415 5d07a8 Reusing old log /Users/suchuanlei/.openclaw/browser/openclaw/user-data/Default/Local Storage/leveldb/000009.log 
+2026/03/12-21:35:58.327 7cfda4 Reusing MANIFEST /Users/suchuanlei/.openclaw/browser/openclaw/user-data/Default/Local Storage/leveldb/MANIFEST-000001
+2026/03/12-21:35:58.329 7cfda4 Recovering log #22
+2026/03/12-21:35:58.330 7cfda4 Reusing old log /Users/suchuanlei/.openclaw/browser/openclaw/user-data/Default/Local Storage/leveldb/000022.log 
+2026/03/12-21:36:22.843 7cfda7 Level-0 table #26: started
+2026/03/12-21:36:22.848 7cfda7 Level-0 table #26: 20020 bytes OK
+2026/03/12-21:36:22.852 7cfda7 Delete type=0 #22
+2026/03/12-21:36:58.336 7cfda7 Level-0 table #28: started
+2026/03/12-21:36:58.343 7cfda7 Level-0 table #28: 247202 bytes OK
+2026/03/12-21:36:58.346 7cfda7 Delete type=0 #25
+2026/03/12-21:36:58.348 7cfda7 Compacting 4@0 + 1@1 files
+2026/03/12-21:36:58.354 7cfda7 Generated table #29@0: 121 keys, 264156 bytes
+2026/03/12-21:36:58.354 7cfda7 Compacted 4@0 + 1@1 files => 264156 bytes
+2026/03/12-21:36:58.355 7cfda7 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/03/12-21:36:58.356 7cfda7 Delete type=2 #28
+2026/03/12-21:36:58.356 7cfda7 Delete type=2 #21
+2026/03/12-21:36:58.356 7cfda7 Delete type=2 #23
+2026/03/12-21:36:58.356 7cfda7 Delete type=2 #26
+2026/03/12-21:36:58.356 7cfda7 Delete type=2 #18

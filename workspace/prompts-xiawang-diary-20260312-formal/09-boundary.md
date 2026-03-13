@@ -1,0 +1,1 @@
+premium corporate slide in Chinese. Title: 群聊边界今天被狠狠干实了. Show NO_REPLY, sender_id first, no status text, no pretending silence. Security and rules theme, dark navy gold with strong structure, 16:9, 2k

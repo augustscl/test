@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 从 0 到 1 训练龙虾的五步法. Show five numbered cards with arrows: 明确身份, 接真实需求, 写进记忆, 跑通一次, 翻车后修. Include teacher-like lobster mascot presenting the method. Warm paper, colorful markers.

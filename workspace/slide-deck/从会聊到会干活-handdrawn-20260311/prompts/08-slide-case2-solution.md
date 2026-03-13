@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 语音克隆的完整链路. Show a playful checklist or pipeline with five steps: 参考音频标准化, Noiz克隆, 生成opus, 上传飞书, 发audio消息. Use waveform doodles, microphone, upload arrow, message bubble. Include a proud 虾王 wearing headphones and holding a mic. Warm, memorable, highly instructional.

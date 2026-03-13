@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 今天最重要的变化：不是做得更多，而是开始长出结构. Quote-focused composition with bold handwritten emphasis. Surround with small doodles of connected gears, notes, systems, and arrows. Warm and thoughtful, highly readable Chinese.

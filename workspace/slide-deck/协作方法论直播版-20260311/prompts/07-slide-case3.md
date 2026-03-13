@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 案例三：发公众号——从工具堆叠到完整工作流. Show a layered process: article, ppt images, insertion, theme/color, draft publishing. Multiple modules connected into one coherent chain. Premium production-line look, vivid blue/gold/orange accents, Chinese readable, live-talk ready.

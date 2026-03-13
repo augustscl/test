@@ -1,0 +1,18 @@
+{
+  "id": "626bb868-8c49-41e8-92f5-ccfd7b428e2e",
+  "enqueuedAt": 1773171123416,
+  "channel": "feishu",
+  "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1",
+  "payloads": [
+    {
+      "text": "已完成：检测到变更，已提交并推送。\ncommit: 920474a\nmessage: 🦐 每日自动备份",
+      "replyToTag": false,
+      "replyToCurrent": false,
+      "audioAsVoice": false
+    }
+  ],
+  "bestEffort": false,
+  "retryCount": 2,
+  "lastAttemptAt": 1773321654616,
+  "lastError": "Request failed with status code 400"
+}

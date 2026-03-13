@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in magazine-poster style. Title: 为什么很多人用了 AI 很久，还是只有“临时工”？. Use bold magazine layout, asymmetrical text blocks, dramatic contrast between shiny chat output and broken delivery tasks. Add subtle lobster motif. Poster-like, sharp, stylish, readable Chinese.

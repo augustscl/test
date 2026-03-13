@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in magazine-poster style. Title: 普通人最适合先拥有哪三种龙虾？. Three bold fashion-editorial cards for 内容型龙虾, 助理型龙虾, 运营型龙虾. Distinct visual identity for each. Stylish, memorable, clear Chinese.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 案例二：发语音——从生成音频到真正发出语音条. Show waveform, upload arrows, and Feishu audio bubble in sketch form. Include lobster mascot with microphone. Clear Chinese labels, lively and instructive.

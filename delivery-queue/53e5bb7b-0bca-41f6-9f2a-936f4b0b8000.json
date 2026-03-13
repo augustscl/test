@@ -1,0 +1,18 @@
+{
+  "id": "53e5bb7b-0bca-41f6-9f2a-936f4b0b8000",
+  "enqueuedAt": 1773342145832,
+  "channel": "feishu",
+  "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1",
+  "payloads": [
+    {
+      "text": "bash: /Users/suchuanlei/.openclaw/workspace/scripts/nightly-security-audit.sh: No such file or directory",
+      "replyToTag": false,
+      "replyToCurrent": false,
+      "audioAsVoice": false
+    }
+  ],
+  "bestEffort": false,
+  "retryCount": 1,
+  "lastAttemptAt": 1773342146054,
+  "lastError": "Request failed with status code 400"
+}

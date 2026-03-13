@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 问题不在模型会不会说，而在能不能交付. Central quote-focused composition with large Chinese typography. Surrounding visuals: document delivered, voice sent, ppt generated, draft box success. Minimal but powerful, elegant editorial layout, keynote-quality slide, readable Chinese.

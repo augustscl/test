@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 让 AI 真正落地，要打通五个闭环. Show a circular infographic with five glowing nodes: 需求闭环, 技能闭环, 记忆闭环, 执行闭环, 纠错闭环. Add arrows and icons for each. Include small lobster king mascot guiding the loop. Modern, systematic, vivid, presentation-ready, Chinese readable.

@@ -1,0 +1,18 @@
+{
+  "id": "e9532f3e-94e4-40b8-b786-0eb48ef31635",
+  "enqueuedAt": 1773343900540,
+  "channel": "feishu",
+  "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1",
+  "payloads": [
+    {
+      "text": "苏神，Git 备份已经给你推上去了。\n\ncommit：`42005fd`\n消息：`🦐 每日自动备份`\n\n本王这钳子干活还是稳的。",
+      "mediaUrls": []
+    }
+  ],
+  "threadId": null,
+  "replyToId": null,
+  "bestEffort": false,
+  "retryCount": 1,
+  "lastAttemptAt": 1773343900779,
+  "lastError": "Request failed with status code 400"
+}

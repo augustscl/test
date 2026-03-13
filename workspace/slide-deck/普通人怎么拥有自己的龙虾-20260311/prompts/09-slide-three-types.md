@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 普通人最适合先拥有哪三种龙虾？. Three-card layout: 内容型龙虾, 助理型龙虾, 运营型龙虾. Each card should have a distinct icon system and short value cues. Clean spacing, modern visual hierarchy, subtle lobster branding, Chinese readable, presentation-ready.

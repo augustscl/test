@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 真正的完成标准：不是回应，而是可使用结果. Checklist comparison: wrong standard vs correct standard. Include deliverables like sent file, published draft, playable voice, created ppt. Strong clarity, black/white with vivid accents, Chinese readable.

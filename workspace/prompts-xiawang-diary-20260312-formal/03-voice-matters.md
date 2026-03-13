@@ -1,0 +1,1 @@
+premium corporate slide in Chinese. Title: 为什么声音这件事这么重要. Show concepts: 能发语音 ≠ 有自己的声音; 声音不是装饰，是存在感; 从工具到人格落点. Sophisticated design, executive keynote, 16:9, 2k

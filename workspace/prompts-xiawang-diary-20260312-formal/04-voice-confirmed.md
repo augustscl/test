@@ -1,0 +1,1 @@
+premium keynote slide in Chinese. Title: 正式音色确认. Show statement: 这个才是你的声音. Visual metaphor of selecting one true frequency/identity among many voices. Elegant dark navy gold, 16:9, 2k

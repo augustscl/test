@@ -1,0 +1,1 @@
+premium consulting-style slide in Chinese. Title: 什么叫“会聊”？. Show bullets elegantly: 一问一答，一次一清; 你不推动，它就不动; 没有上下文连续性; 没有稳定服务能力; 本质：把搜索框换成了对话框. Minimal icons, clean modern design, dark navy and gold, 16:9, 2k

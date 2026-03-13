@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 普通人最适合先拥有哪三种龙虾？. Three illustrated cards: 内容型龙虾, 助理型龙虾, 运营型龙虾. Each card has a cute but capable lobster character variant. Notebook style, colorful and readable.

@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in magazine-poster style. Title: 从 0 到 1 训练龙虾的五步法. Editorial infographic with huge numbers and bold typography, premium poster feel. Show five steps with lobster motif threading through them. Dramatic, modern, visually strong.

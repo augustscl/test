@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in hand-drawn sketch-notes style. Title: 为什么很多人用了 AI 很久，还是只有“临时工”？. Split layout: left side shows chat bubbles and fast answers, right side shows broken tasks and unfinished work. Add lobster doodles as commentary. Warm paper background, marker pen strokes, clear Chinese labels.

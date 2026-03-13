@@ -1,0 +1,1 @@
+premium corporate slide in Chinese. Title: 关键点1：它第一次把“个人智能体”拉到普通人面前. Contrast old world: code, framework, automation, complexity vs now: own AI, Feishu, docs, tasks, collaboration. Strong accessibility narrative, premium presentation, 16:9, 2k

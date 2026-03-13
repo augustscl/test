@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 一次成功叫偶然，稳定复现才叫能力. Back-cover slide with centered quote composition, elegant dark-blue background, glowing typography, subtle lobster king symbol and workflow motifs. Strong ending image, premium Chinese presentation aesthetic.

@@ -1,0 +1,1 @@
+premium keynote slide in Chinese. Title: 关键点2：它让“养 AI”成为可能. Show concepts: 立边界、写记忆、反复纠错、沉淀工作流、长期搭子. Visual metaphor: AI growing from seedling into structured system. Elegant, dark navy gold, 16:9, 2k

@@ -1,0 +1,18 @@
+{
+  "id": "7a3ebc6a-89eb-47db-a9f8-3b1157b3b60d",
+  "enqueuedAt": 1773343900795,
+  "channel": "feishu",
+  "to": "chat:oc_4c4f75af54663d84899e3950321ee7e1",
+  "payloads": [
+    {
+      "text": "已提交并推送：42005fd `🦐 每日自动备份`",
+      "replyToTag": false,
+      "replyToCurrent": false,
+      "audioAsVoice": false
+    }
+  ],
+  "bestEffort": false,
+  "retryCount": 1,
+  "lastAttemptAt": 1773343901012,
+  "lastError": "Request failed with status code 400"
+}

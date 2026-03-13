@@ -1,0 +1,1 @@
+Create a 16:9 Chinese slide in bold-editorial style. Title: 案例三：发公众号 / 做 PPT——从一句话到完整工作流. Show a layered production chain: article draft, outline, prompts, images, PPT, article insertion, publishing. Use connected modules and editorial dashboard style. Include lobster mascot acting like a workflow orchestrator. Chinese readable, energetic, premium.
