@@ -1,0 +1,1 @@
+premium corporate slide in Chinese. Title: 开场问题：我们现在到底在用什么样的 AI？. Show contrast: many people use AI for ask questions, rewrite copy, generate titles, summarize content. Core statement highlighted: AI 的上半场是会聊，下半场是会干. Dark navy, gold accents, executive presentation, 16:9, 2k

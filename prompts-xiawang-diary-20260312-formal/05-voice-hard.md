@@ -1,0 +1,1 @@
+premium strategy slide in Chinese. Title: 飞书语音条链路为什么这么难. Show chain of problems: JSON误当音频, duration异常, 参考音识别失败, 转码链路不稳定. Serious technical systems vibe, dark navy with subtle alert accents, 16:9, 2k

@@ -1,0 +1,646 @@
+#!/usr/bin/env bash
+# docx - Unified entry point
+# Usage: docx {env|init|build|validate}
+#
+# Design principles:
+# - Single entry point, no need to remember multiple scripts
+# - Auto-detect environment, compatible with installed/not installed/partial
+# - Fixed working directory, no need to cd
+# - All output must pass validation
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SKILL_DIR="$(dirname "$SCRIPT_DIR")"
+
+# Fixed path conventions
+WORK_DIR="/tmp/docx-work"
+OUTPUT_DIR="${DOCX_OUTPUT_DIR:-$HOME/Desktop}"
+
+# ============================================================================
+# Path remapping for legacy compatibility
+# ============================================================================
+
+# Remap legacy path if model uses old convention
+remap_legacy_path() {
+    local path="$1"
+    if [[ "$path" == /mnt/okcomputer/* ]]; then
+        local remapped="${path/\/mnt\/okcomputer\/output/$OUTPUT_DIR}"
+        echo "Note: Automatically remapped $path to $remapped (legacy path)" >&2
+        echo "$remapped"
+    else
+        echo "$path"
+    fi
+}
+
+# ============================================================================
+# Dependency detection
+# ============================================================================
+
+is_macos() {
+    [ "$(uname -s)" = "Darwin" ]
+}
+
+# Find dotnet, return full path
+find_dotnet() {
+    local candidates=(
+        "dotnet"
+        "/opt/homebrew/bin/dotnet"
+        "/usr/local/bin/dotnet"
+        "$HOME/.dotnet/dotnet"
+        "/root/.dotnet/dotnet"
+        "/usr/local/share/dotnet/dotnet"
+        "/usr/share/dotnet/dotnet"
+        "/opt/dotnet/dotnet"
+    )
+    local bin=""
+
+    for bin in "${candidates[@]}"; do
+        if [ "$bin" = "dotnet" ]; then
+            if command -v dotnet >/dev/null 2>&1; then
+                command -v dotnet
+                return 0
+            fi
+        elif [ -x "$bin" ]; then
+            echo "$bin"
+            return 0
+        fi
+    done
+    return 1
+}
+
+# Check dotnet status: ok|outdated|broken|missing
+check_dotnet_status() {
+    local dotnet_bin=""
+
+    if dotnet_bin=$(find_dotnet 2>/dev/null); then
+        local version=""
+        if version=$("$dotnet_bin" --version 2>/dev/null); then
+            local major
+            major=$(echo "$version" | cut -d. -f1)
+            if [ "$major" -ge 6 ]; then
+                echo "ok:$dotnet_bin:$version"
+                return 0
+            fi
+            echo "outdated:$dotnet_bin:$version"
+            return 1
+        fi
+        echo "broken:$dotnet_bin"
+        return 1
+    fi
+
+    echo "missing"
+    return 1
+}
+
+# Install dotnet
+install_dotnet() {
+    echo "  Downloading .NET SDK..."
+    curl -sSL https://dot.net/v1/dotnet-install.sh -o /tmp/dotnet-install.sh
+    chmod +x /tmp/dotnet-install.sh
+    /tmp/dotnet-install.sh --channel 8.0 --install-dir "$HOME/.dotnet" 2>/dev/null
+
+    if [ -x "$HOME/.dotnet/dotnet" ]; then
+        export DOTNET="$HOME/.dotnet/dotnet"
+        echo "  ✓ Installed: $("$DOTNET" --version)"
+    else
+        echo "  ✗ Installation failed"
+        echo "    Manual: https://dotnet.microsoft.com/download"
+        exit 1
+    fi
+}
+
+# Ensure dotnet is available
+ensure_dotnet() {
+    local status=""
+    status="$(check_dotnet_status || true)"
+
+    local state="$(echo "$status" | cut -d: -f1)"
+    local bin="$(echo "$status" | cut -d: -f2)"
+    local ver="$(echo "$status" | cut -d: -f3)"
+
+    case "$state" in
+        ok)
+            export DOTNET="$bin"
+            ;;
+        outdated)
+            echo "⚠ dotnet $ver too old (need 6+), upgrading..."
+            install_dotnet
+            ;;
+        broken)
+            if is_macos; then
+                echo "✗ dotnet appears broken at: $bin"
+                echo "  macOS fix suggestions:"
+                echo "    - If installed via Homebrew: brew reinstall --cask dotnet-sdk"
+                echo "    - If installed via dotnet-install: rm the broken binary manually, then rerun 'docx init'"
+                echo "    - Verify with: $bin --version"
+                exit 1
+            fi
+            echo "⚠ dotnet broken, reinstalling..."
+            rm -rf "$HOME/.dotnet"
+            install_dotnet
+            ;;
+        missing)
+            echo "○ dotnet not found, installing..."
+            install_dotnet
+            ;;
+        *)
+            echo "✗ Unable to determine dotnet status"
+            exit 1
+            ;;
+    esac
+}
+
+ensure_python3() {
+    if ! command -v python3 >/dev/null 2>&1; then
+        echo "✗ python3 required but not found"
+        echo "  Install: apt install python3 / brew install python3"
+        exit 1
+    fi
+}
+
+has_timeout_command() {
+    command -v timeout >/dev/null 2>&1 || command -v gtimeout >/dev/null 2>&1
+}
+
+run_with_timeout() {
+    local seconds="$1"
+    shift
+
+    if command -v timeout >/dev/null 2>&1; then
+        timeout "$seconds" "$@"
+        return $?
+    fi
+
+    if command -v gtimeout >/dev/null 2>&1; then
+        gtimeout "$seconds" "$@"
+        return $?
+    fi
+
+    "$@"
+}
+
+current_runtime_rid() {
+    local os_name
+    local arch_name
+    local os_rid
+    local arch_rid
+
+    os_name="$(uname -s)"
+    arch_name="$(uname -m)"
+
+    case "$os_name" in
+        Darwin) os_rid="osx" ;;
+        Linux)  os_rid="linux" ;;
+        *)      os_rid="unknown" ;;
+    esac
+
+    case "$arch_name" in
+        arm64|aarch64) arch_rid="arm64" ;;
+        x86_64|amd64)  arch_rid="x64" ;;
+        *)             arch_rid="$arch_name" ;;
+    esac
+
+    echo "$os_rid-$arch_rid"
+}
+
+validator_runtime_target() {
+    local deps_json="$SKILL_DIR/validator/Validator.deps.json"
+
+    python3 - "$deps_json" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+with path.open('r', encoding='utf-8') as f:
+    data = json.load(f)
+name = data.get('runtimeTarget', {}).get('name', '')
+print(name.rsplit('/', 1)[-1] if '/' in name else name)
+PY
+}
+
+check_validator_compatibility() {
+    local validator_dir="$SKILL_DIR/validator"
+    local validator_dll="$validator_dir/Validator.dll"
+    local runtimeconfig="$validator_dir/Validator.runtimeconfig.json"
+    local deps_json="$validator_dir/Validator.deps.json"
+    local runtime_target=""
+    local current_rid=""
+
+    [ -f "$validator_dll" ] || { echo "missing Validator.dll"; return 1; }
+    [ -f "$runtimeconfig" ] || { echo "missing Validator.runtimeconfig.json"; return 1; }
+    [ -f "$deps_json" ] || { echo "missing Validator.deps.json"; return 1; }
+
+    if ! command -v python3 >/dev/null 2>&1; then
+        echo "python3 unavailable to inspect validator bundle"
+        return 1
+    fi
+
+    if ! runtime_target="$(validator_runtime_target 2>/dev/null)"; then
+        echo "could not read Validator.deps.json"
+        return 1
+    fi
+
+    if [ -z "$runtime_target" ]; then
+        echo "Validator.deps.json has no runtimeTarget"
+        return 1
+    fi
+
+    current_rid="$(current_runtime_rid)"
+    if [ "$runtime_target" != "$current_rid" ]; then
+        echo "bundle targets $runtime_target but current platform is $current_rid"
+        return 1
+    fi
+
+    return 0
+}
+
+optional_dotnet_path() {
+    local status=""
+    status="$(check_dotnet_status || true)"
+
+    case "$(echo "$status" | cut -d: -f1)" in
+        ok)
+            echo "$(echo "$status" | cut -d: -f2)"
+            return 0
+            ;;
+    esac
+
+    return 1
+}
+
+# Check all dependencies
+check_deps() {
+    local status=""
+    status="$(check_dotnet_status || true)"
+
+    local state="$(echo "$status" | cut -d: -f1)"
+    local ver="$(echo "$status" | cut -d: -f3)"
+
+    # dotnet (required for build/init, optional for Python-only validation)
+    case "$state" in
+        ok)       echo "✓ dotnet $ver" ;;
+        outdated) echo "⚠ dotnet $ver (outdated, need 6+)" ;;
+        broken)   echo "✗ dotnet broken" ;;
+        missing)  echo "○ dotnet not installed" ;;
+    esac
+
+    # python3 (required)
+    if command -v python3 >/dev/null 2>&1; then
+        echo "✓ python3 $(python3 --version 2>&1 | cut -d' ' -f2)"
+    else
+        echo "✗ python3 not found (required)"
+    fi
+
+    # timeout / gtimeout (optional)
+    if command -v timeout >/dev/null 2>&1; then
+        echo "✓ timeout"
+    elif command -v gtimeout >/dev/null 2>&1; then
+        echo "✓ gtimeout"
+    else
+        echo "○ timeout/gtimeout (optional, restore runs without it)"
+    fi
+
+    # validator bundle (optional)
+    local validator_reason=""
+    if validator_reason="$(check_validator_compatibility 2>/dev/null)"; then
+        echo "✓ OpenXML validator bundle ($(current_runtime_rid))"
+    else
+        echo "○ OpenXML validator bundle ($validator_reason)"
+    fi
+
+    # pandoc (optional - statistics)
+    if command -v pandoc >/dev/null 2>&1; then
+        echo "✓ pandoc $(pandoc --version 2>/dev/null | head -1 | cut -d' ' -f2)"
+    else
+        echo "○ pandoc (optional, for word count)"
+    fi
+
+    # playwright (optional - backgrounds)
+    if python3 -c "import playwright" 2>/dev/null; then
+        echo "✓ playwright"
+    else
+        echo "○ playwright (optional, for backgrounds)"
+    fi
+
+    # matplotlib (optional - complex charts)
+    if python3 -c "import matplotlib" 2>/dev/null; then
+        echo "✓ matplotlib"
+    else
+        echo "○ matplotlib (optional, for complex charts)"
+    fi
+}
+
+# Ensure all required dependencies
+ensure_deps() {
+    ensure_dotnet
+    ensure_python3
+}
+
+# ============================================================================
+# Working directory
+# ============================================================================
+
+ensure_workspace() {
+    mkdir -p "$WORK_DIR" "$OUTPUT_DIR"
+
+    # Copy templates (don't overwrite existing files)
+    [ -f "$WORK_DIR/KimiDocx.csproj" ] || cp "$SKILL_DIR/assets/templates/KimiDocx.csproj" "$WORK_DIR/"
+    [ -f "$WORK_DIR/Program.cs" ] || cp "$SKILL_DIR/assets/templates/Program.cs" "$WORK_DIR/"
+}
+
+# ============================================================================
+# Error mapping
+# ============================================================================
+
+print_error_fix() {
+    local message="$1"
+    echo "  → FIX: $message"
+}
+
+enhance_error() {
+    local line="$1"
+
+    case "$line" in
+        *CS0246*"'Separator'"*)
+            print_error_fix "Use 'SeparatorMark' instead of 'Separator'"
+            return
+            ;;
+        *CS0246*"'ContinuationSeparator'"*)
+            print_error_fix "Use 'ContinuationSeparatorMark'"
+            return
+            ;;
+        *CS1009*)
+            print_error_fix "Unrecognized escape → Use @\"...\" verbatim string"
+            return
+            ;;
+        *CS1010*)
+            print_error_fix "Newline in constant → Use @\"...\" for multiline"
+            return
+            ;;
+        *CS0103*"'WordprocessingDocument'"*)
+            print_error_fix "Add: using DocumentFormat.OpenXml.Packaging;"
+            return
+            ;;
+        *CS0103*"'Body'"*)
+            print_error_fix "Add: using DocumentFormat.OpenXml.Wordprocessing;"
+            return
+            ;;
+        *CS0103*"'Paragraph'"*)
+            print_error_fix "Add: using DocumentFormat.OpenXml.Wordprocessing;"
+            return
+            ;;
+        *CS0029*"cannot implicitly convert"*)
+            print_error_fix "Type mismatch: check int vs string for IDs"
+            return
+            ;;
+    esac
+}
+
+# ============================================================================
+# Subcommands
+# ============================================================================
+
+cmd_env() {
+    echo "=== Dependencies ==="
+    check_deps
+    echo ""
+    echo "=== Workspace ==="
+    if [ -d "$WORK_DIR" ]; then
+        echo "✓ $WORK_DIR"
+        [ -f "$WORK_DIR/Program.cs" ] && echo "  Program.cs exists"
+    else
+        echo "○ $WORK_DIR (run 'docx init')"
+    fi
+    echo ""
+    echo "=== Output ==="
+    echo "  $OUTPUT_DIR"
+}
+
+cmd_init() {
+    echo "=== Checking dependencies ==="
+    ensure_deps
+    echo "✓ dotnet $("$DOTNET" --version)"
+    echo "✓ python3 $(python3 --version 2>&1 | cut -d' ' -f2)"
+
+    echo ""
+    echo "=== Setting up workspace ==="
+    ensure_workspace
+    echo "✓ $WORK_DIR"
+
+    echo ""
+    echo "Done!"
+    echo "  Edit:   $WORK_DIR/Program.cs"
+    echo "  Build:  docx build"
+    echo "  Output: $OUTPUT_DIR/"
+}
+
+cmd_build() {
+    ensure_deps
+    ensure_workspace
+
+    local output="${1:-$OUTPUT_DIR/output.docx}"
+    # Remap legacy work path if used
+    output=$(remap_legacy_path "$output")
+
+    # Restore packages (always needed to generate obj/project.assets.json)
+    # --ignore-failed-sources: if NuGet.org is unreachable, use cached packages instead of failing
+    echo "▶ Restoring packages..."
+    local restore_output=""
+    if ! has_timeout_command; then
+        echo "  ○ timeout/gtimeout not found; running restore without a time limit"
+    fi
+    if ! restore_output=$(run_with_timeout 20 "$DOTNET" restore "$WORK_DIR/KimiDocx.csproj" --verbosity quiet --ignore-failed-sources 2>&1); then
+        echo "  ⚠ NuGet restore issue, checking cached packages..."
+        if [ ! -f "$WORK_DIR/obj/project.assets.json" ]; then
+            echo "  ❌ Restore failed and no cached packages available"
+            echo "$restore_output" | tail -5
+            echo "  Hint: pre-cache packages in Docker image with: dotnet restore KimiDocx.csproj"
+            exit 1
+        fi
+        echo "  ✓ Using cached packages"
+    else
+        echo "  ✓ Packages ready"
+    fi
+
+    echo "▶ Compiling..."
+    local build_output=""
+    if ! build_output=$("$DOTNET" build "$WORK_DIR/KimiDocx.csproj" --verbosity quiet --no-restore 2>&1); then
+        echo "❌ Compile failed"
+        echo ""
+        while IFS= read -r line; do
+            if echo "$line" | grep -qE "error (CS|NU|MSB)[0-9]+"; then
+                echo "  $line"
+                enhance_error "$line"
+            fi
+        done <<< "$build_output"
+        exit 1
+    fi
+    echo "  ✓ Compiled"
+
+    echo "▶ Running..."
+    if ! (cd "$WORK_DIR" && "$DOTNET" run --no-build -- "$output" 2>&1); then
+        echo "❌ Generation failed"
+        exit 1
+    fi
+
+    # Check output file
+    if [ ! -f "$output" ]; then
+        echo "❌ Output not found: $output"
+        echo "  Check your Program.cs output path"
+        exit 1
+    fi
+    echo "  ✓ Generated"
+
+    # Mandatory validation
+    echo "▶ Validating..."
+    if ! do_validate "$output"; then
+        echo ""
+        echo "⚠️  VALIDATION FAILED - Document saved but may have issues"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "Document saved to: $output"
+        echo "However, due to the errors above, it may not open correctly in Word/WPS."
+        echo ""
+        echo "Common causes:"
+        echo "  • If editing an existing document: the original file may be non-standard but openable in user's environment"
+        echo "  • If creating from scratch: check the error messages above and fix your code, otherwise the user likely cannot open the file"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        exit 1
+    fi
+
+    # Statistics + content verification prompt
+    if command -v pandoc >/dev/null 2>&1; then
+        # Statistics
+        local text
+        text=$(pandoc "$output" -t plain 2>/dev/null)
+        local chars
+        chars=$(echo "$text" | wc -m | tr -d '[:space:]')
+        local words
+        words=$(echo "$text" | wc -w | tr -d '[:space:]')
+        local images
+        images=$(unzip -l "$output" 2>/dev/null | grep -c 'word/media/' || echo "0")
+        images="${images//[[:space:]]/}"
+
+        # Detect if there are revisions or comments
+        local has_revisions=false
+        local has_comments=false
+        if unzip -p "$output" word/document.xml 2>/dev/null | grep -qE '<w:ins|<w:del'; then
+            has_revisions=true
+        fi
+        if unzip -l "$output" 2>/dev/null | grep -q 'word/comments.xml'; then
+            has_comments=true
+        fi
+
+        if [ "$images" -eq 0 ]; then
+            echo "  ⚠️  $chars chars, $words words, 0 images - if charts were generated, verify AddInlineImage() was called"
+        else
+            echo "  📊 $chars chars, $words words, $images images"
+        fi
+        echo "  💡 Structure validated. Now verify CONTENT with: pandoc \"$output\" -t plain"
+        if [ "$has_revisions" = true ] || [ "$has_comments" = true ]; then
+            echo "     Revisions/comments detected - use --track-changes=all to verify marker positions"
+        fi
+    fi
+
+    echo ""
+    echo "✓ Done: $output"
+}
+
+cmd_validate() {
+    ensure_python3
+    local file="$1"
+
+    [ -n "$file" ] || { echo "Usage: docx validate <file.docx>"; exit 1; }
+    [ -f "$file" ] || { echo "✗ File not found: $file"; exit 1; }
+
+    echo "▶ Validating: $file"
+    do_validate "$file"
+    echo "✓ Valid"
+}
+
+# Internal validation function
+#do_validate uses Python validation unconditionally and OpenXML validation only when compatible.
+do_validate() {
+    local file="$1"
+    local validator_reason=""
+    local dotnet_bin="${DOTNET:-}"
+
+    # Unified validation: element order fix + business rules (1 unzip)
+    if ! python3 "$SCRIPT_DIR/validate_all.py" "$file" 2>&1; then
+        return 1
+    fi
+
+    if [ -z "$dotnet_bin" ] || [ ! -x "$dotnet_bin" ]; then
+        dotnet_bin="$(optional_dotnet_path || true)"
+    fi
+
+    if [ -z "$dotnet_bin" ]; then
+        echo "Warning: Skipping OpenXML validator: dotnet runtime not available"
+        return 0
+    fi
+
+    if ! validator_reason="$(check_validator_compatibility)"; then
+        echo "Warning: Skipping OpenXML validator: $validator_reason"
+        return 0
+    fi
+
+    # OpenXML validation (separate unzip, Validator.dll requires docx file)
+    if ! "$dotnet_bin" "$SKILL_DIR/validator/Validator.dll" "$file" 2>&1; then
+        return 1
+    fi
+
+    return 0
+}
+
+# inspect command removed - examine document structure by unzipping and reading XML
+
+# ============================================================================
+# Routing
+# ============================================================================
+
+case "${1:-help}" in
+    env)
+        cmd_env
+        ;;
+    init)
+        cmd_init
+        ;;
+    build)
+        cmd_build "$2"
+        ;;
+    validate)
+        cmd_validate "$2"
+        ;;
+    -h|--help|help)
+        cat <<EOF
+Usage: $SKILL_DIR/scripts/docx <command> [args]
+
+Commands:
+  env           Show environment status (no changes)
+  init          Setup dependencies + workspace
+  build [out]   Compile, run, validate (default: ~/Desktop/output.docx)
+  validate FILE Validate existing docx
+
+Paths:
+  SKILL dir:  $SKILL_DIR/
+  Workspace:  /tmp/docx-work/             (edit Program.cs here)
+  Output:     $OUTPUT_DIR/                 (final deliverables, override with DOCX_OUTPUT_DIR)
+
+Create Workflow:
+  1. $SKILL_DIR/scripts/docx init
+  2. Edit /tmp/docx-work/Program.cs
+  3. $SKILL_DIR/scripts/docx build ~/Desktop/report.docx
+
+Edit Workflow:
+  1. Examine .docx structure (unzip and read XML)
+  2. Edit /tmp/docx-work/Program.cs
+  3. $SKILL_DIR/scripts/docx build ~/Desktop/edited.docx
+EOF
+        ;;
+    *)
+        echo "Unknown: $1"
+        echo "Run './scripts/docx help' for usage"
+        exit 1
+        ;;
+esac

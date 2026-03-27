@@ -1,0 +1,1 @@
+premium corporate keynote slide in Chinese, dark navy and gold palette, elegant executive presentation style, lots of whitespace. Title: 从会聊到会干. Subtitle: 为什么 OpenClaw 是个人智能体时代的重要入口. Speaker: 苏神. Visual metaphor: transition from chat bubbles to connected workflow system, subtle AI network lines, premium modern typography, sophisticated consulting deck aesthetic, 16:9, 2k

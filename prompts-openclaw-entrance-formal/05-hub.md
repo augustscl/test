@@ -1,0 +1,1 @@
+premium corporate slide in Chinese. Title: 为什么 OpenClaw 是入口，而不是普通工具. Diagram of hub-and-spoke system connecting messages, docs, sheets, skills, automation. Core conclusion: 它不是单点工具，而是工作流中枢. Sophisticated, strategic, executive look, dark navy gold, 16:9, 2k

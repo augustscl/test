@@ -1,0 +1,1 @@
+premium corporate slide in Chinese. Title: 为什么很多人学不会 OpenClaw. Show five mistakes as clean list: 追求最强模型; 当成聊天机器人; 只装不养; 缺乏边界; 没接入工作流. Visual style: strategic review slide, dark navy gold, 16:9, 2k

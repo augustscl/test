@@ -1,0 +1,1 @@
+premium cinematic slide in Chinese. Title: 从会说到会唱. Show evolution from voice to music. Mention 龙虾王朝, 开场战歌版, 直播纯音乐版. Energetic, powerful, but premium, 16:9, 2k

@@ -1,0 +1,1 @@
+premium corporate slide in Chinese. Title: 关键点3：它让 AI 进入真实协作系统. Show Feishu, group chat, docs, calendar, sheets, workflow integration. Core message: AI 开始进入你真正工作的地方. Modern enterprise visual style, 16:9, 2k
