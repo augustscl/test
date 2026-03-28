@@ -42,6 +42,15 @@
 
 ## 📦 基础设施
 
+- **lark-cli v1.0.0**（2026-03-28 安装完成）
+  - App ID：`cli_a94d5897e3b8dbc6`（飞书开放平台应用）
+  - 用户 token：已登录（有效期 2h，自动续 refresh token 到 2026-04-04）
+  - Bot token：未登录（`lark-cli auth login --domain bot` 可登录）
+  - 能力：doc/wiki/sheets/calendar/contact/im/mail/vc/task/whiteboard/search 全覆盖
+  - 文档：`~/.lark-cli/config.json`
+  - 使用：`export PATH="$HOME/.npm-global/bin:$PATH" && lark-cli <command>`
+  - 注意：`im +messages-send` 需要 `--as bot`，bot 身份才能发消息
+
 - Git 灾备：git@github.com:augustscl/test.git (master 分支)
 - SSH 认证：~/.ssh/id_ed25519（已配置 GitHub）
 - Git 身份：虾王殿下 <xiawang@openclaw.ai>
