@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "youmind-wechat-article": {
+      "source": "YouMind-OpenLab/skills",
+      "sourceType": "github",
+      "computedHash": "0fda9cdd664dd57d23332bce951d247944120e2f257752cd4770f3ef2fe0bc5c"
+    }
+  }
+}
