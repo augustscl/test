@@ -17,6 +17,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
+import { fetch, ProxyAgent } from 'undici';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -56,6 +57,12 @@ function loadConfig(): YouMindConfig {
 // HTTP helper
 // ---------------------------------------------------------------------------
 
+/** 从环境变量读取代理 URL（支持 http/https 代理） */
+function getProxyUrl(): string | undefined {
+  return process.env.HTTPS_PROXY || process.env.https_proxy ||
+    process.env.HTTP_PROXY || process.env.http_proxy;
+}
+
 async function post<T = unknown>(
   endpoint: string,
   body: Record<string, unknown> = {},
@@ -70,6 +77,10 @@ async function post<T = unknown>(
   const baseUrls = [cfg.baseUrl, ...YOUMIND_OPENAPI_BASE_URLS.filter(u => u !== cfg.baseUrl)];
   let lastError: Error | null = null;
 
+  // 获取代理（如果环境变量设置了）
+  const proxyUrl = getProxyUrl();
+  const dispatcher = proxyUrl ? new ProxyAgent(proxyUrl) : undefined;
+
   for (const base of baseUrls) {
     try {
       const url = `${base}${endpoint}`;
@@ -80,6 +91,7 @@ async function post<T = unknown>(
           'x-api-key': cfg.apiKey,
         },
         body: JSON.stringify(body),
+        dispatcher,
         // createChat 需要等 AI 响应，给 120s；其他 API 15s 足够
         signal: AbortSignal.timeout(endpoint.includes('Chat') || endpoint.includes('Message') ? 120_000 : 15_000),
       });
