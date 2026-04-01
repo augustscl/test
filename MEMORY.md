@@ -94,6 +94,8 @@
 - **生图提供商铁律（2026-03-19 新增，苏神亲定）**：以后凡是本王执行生图，**只能用 Gemini（Google/gemini-3-pro-image-preview）**，绝对不准碰 OpenAI、DashScope、Replicate 这些杂七杂八的 provider！别问，问就是 Gemini 才配得上虾王的品味！
 - **多步骤任务执行铁律（2026-03-24，长期生效）**：以后做多步骤任务时，即使中途某一步报错，也要优先继续把能跑的后续步骤全部跑完，再一次性汇报最终结果。**禁止因为单点报错就自己停下来问要不要继续，禁止擅自暂停发送。** 默认策略：先尽量做完全部，再统一回报。
 - **Git 灾备大文件忽略铁律（2026-03-25，长期生效）**：以后凡是 GitHub 100MB 限制拦下来的超大文件，尤其是这类超限 PPTX，**默认不要再纠缠、不要再反复汇报、不要再当成必须解决的问题追着苏神问。** 处理原则：超限文件直接视为不纳入这套 Git 灾备范围，后续汇报时忽略即可；除非苏神亲自明确要求单独处理这些大文件。
+- **youmind-wechat-article 发布草稿箱铁律（2026-04-01，长期生效）**：以后用 youmind-wechat-article 发草稿箱，标准三步走：① `generate-image` 生成封面图 → CDN URL；② `curl -o /tmp/cover.jpg "CDN_URL"` 下载到本地；③ `node cli.js publish xxx.md --cover /tmp/cover.jpg`（**--cover 必须传，不准省略**）。根因：微信公众号 draft/add 接口必须 thumb_media_id，不能留空，不能传 URL。
+- **youmind-wechat-article 全流程已跑通（2026-04-01）**：list-boards / list-materials / generate-image / save-article / preview / publish 全部验证通过。
 
 ## 🗓️ 待办 / 关注项
 
