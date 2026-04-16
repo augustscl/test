@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "lovstudio:write-book": {
+      "source": "lovstudio/write-book-skill",
+      "sourceType": "github",
+      "computedHash": "04cdaed5a683666b2545abf87a6fdb544f1616eddbbb07eb1468cd36583c7ef2"
+    },
     "youmind-wechat-article": {
       "source": "YouMind-OpenLab/skills",
       "sourceType": "github",
